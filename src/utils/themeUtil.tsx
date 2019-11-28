@@ -1,21 +1,21 @@
-import React from 'react';
-import { ThemeProvider, useTheme } from '@material-ui/core/styles';
+import React, { ComponentType } from 'react'
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import defaultTheme from '../theme'
 
-const extendThemeWithDefaults = (t: object) => t;
+const extendThemeWithDefaults = (theme?: DefaultTheme) => {
+	if (!theme) return defaultTheme;
+	return { ...defaultTheme, ...theme };
+}
 
-export const withTheme = (Component: Function) => ({
+type withThemeComponentProps = React.PropsWithChildren<{
+	theme?: DefaultTheme,
+}>
+
+export const withTheme = (Component: ComponentType) => ({
 	children,
 	...props
-}: {
-	children?: React.ReactNode,
-	theme?: object,
-}) => {
-	const theme = useTheme();
-	const defaultTheme = extendThemeWithDefaults(theme);
-
-	return (
-		<ThemeProvider theme={props.theme || defaultTheme}>
-			<Component {...props}>{children}</Component>
-		</ThemeProvider>
-	);
-};
+}: withThemeComponentProps) => (
+	<ThemeProvider theme={extendThemeWithDefaults(props.theme)}>
+		<Component {...props}>{children}</Component>
+	</ThemeProvider>
+)
