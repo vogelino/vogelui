@@ -1,13 +1,33 @@
-import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript';
 import external from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import { uglify } from 'rollup-plugin-uglify';
 import packageJSON from './package.json';
 
-const input = './src/index.js';
+const input = './src/index.tsx';
 const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
+
+const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'], });
+const typescriptPlugin = typescript();
+const externalPlugin = external();
+const terserPlugin = terser();
+const uglifyPlugin = uglify();
+const commonjsPlugin = commonjs({
+	extensions: ['.js', '.jsx', '.ts', '.tsx'],
+	namedExports: {
+		'node_modules/react-is/index.js': [ 'ForwardRef' ],
+		'node_modules/prop-types/index.js': [ 'elementType' ],
+	},
+});
+
+const commonPlugins = [
+	resolvePlugin,
+	typescriptPlugin,
+	externalPlugin,
+	commonjsPlugin,
+];
 
 export default [
 	// CommonJS
@@ -16,33 +36,18 @@ export default [
 		output: {
 			file: packageJSON.main,
 			format: 'cjs',
-			sourcemap: true
+			sourcemap: true,
 		},
-		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs()
-		]
+		plugins: commonPlugins,
 	},
 	{
 		input,
 		output: {
 			file: minifyExtension(packageJSON.main),
 			format: 'cjs',
-			sourcemap: true
+			sourcemap: true,
 		},
-		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs(),
-			uglify()
-		]
+		plugins: [ ...commonPlugins, uglifyPlugin ],
 	},
 	// UMD
 	{
@@ -53,16 +58,10 @@ export default [
 			name: 'vogelui',
 			globals: {
 				react: 'React',
+				'react-dom': 'ReactDOM',
 			}
 		},
-		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs()
-		]
+		plugins: commonPlugins,
 	},
 	{
 		input,
@@ -72,16 +71,12 @@ export default [
 			name: 'vogelui',
 			globals: {
 				react: 'React',
+				'react-dom': 'ReactDOM',
 			}
 		},
 		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs(),
-			terser()
+			...commonPlugins,
+			terserPlugin,
 		]
 	},
 	{
@@ -91,14 +86,7 @@ export default [
 			format: 'es',
 			exports: 'named'
 		},
-		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs()
-		]
+		plugins: commonPlugins,
 	},
 	{
 		input,
@@ -108,13 +96,8 @@ export default [
 			exports: 'named'
 		},
 		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			external(),
-			resolve(),
-			commonjs(),
-			terser()
+			...commonPlugins,
+			terserPlugin,
 		]
 	},
 ];

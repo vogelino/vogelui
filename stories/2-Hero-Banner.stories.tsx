@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container } from 'components/Container';
+import * as React from 'react';
+import { Container } from '../src/components/Container';
 import MUIContainer from '@material-ui/core/Container';
 import MUITypography from '@material-ui/core/Typography';
 import MUIBox from '@material-ui/core/Box';
@@ -10,7 +10,7 @@ export default {
 
 export const centered = () => (
   <MUIContainer maxWidth="lg">
-    <MUIBox mx="auto" maxWidth="md" bgcolor="#ccc" mb={4} mt={10}>
+    <MUIBox mx="auto" maxWidth="md" mb={4} mt={10}>
       <MUITypography variant="h1" align="center">
           Choose out of 240+ pre-built websites.
       </MUITypography>
