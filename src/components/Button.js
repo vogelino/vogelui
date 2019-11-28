@@ -1,5 +1,5 @@
 import React from 'react';
+import MButton from '@material-ui/core/Button';
+import { withTheme } from 'utils/themeUtil';
 
-export default  ({ children }) => (
-	<button>{children}</button>
-);
+export const Button = withTheme(MButton);
