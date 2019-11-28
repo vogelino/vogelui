@@ -1,0 +1,27 @@
+{
+  "name": "vogelui",
+  "version": "1.0.0",
+  "description": "A collection all-purpose UI elements for building responsive websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vogelino/vogelui.git"
+  },
+  "keywords": [
+    "ui",
+    "library",
+    "react",
+    "responsive",
+    "websites",
+    "material-ui"
+  ],
+  "author": "Lucas Vogel <contact@vogelino.com> (http://vogelino.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vogelino/vogelui/issues"
+  },
+  "homepage": "https://github.com/vogelino/vogelui#readme"
+}
