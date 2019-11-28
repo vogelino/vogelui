@@ -16,6 +16,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "rollup -c",
+    "deploy-storybook": "npm run build-storybook && cd storybook-static && now -A ../now.json && now alias -A ../now.json",
     "prepublishOnly": "rm -rf lib && npm run build",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },

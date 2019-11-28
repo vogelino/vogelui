@@ -62,3 +62,6 @@ typings/
 
 # Lib for publication to npm
 lib
+
+# Storybook build
+storybook-static
