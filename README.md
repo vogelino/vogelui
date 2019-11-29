@@ -1,3 +1,7 @@
-# vogelui
+# vogelui 🦜
 
-A collection all-purpose UI elements for building responsive websites
+A collection UI elements for building responsive websites.
+
+## Included in the library
+- [x] Storybook for testing and publishing
+- [x] 
