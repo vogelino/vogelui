@@ -2,7 +2,5 @@
 	"name": "vogelui",
 	"version": 2,
 	"alias": ["vogelui.vogelino.com"],
-	"routes": [
-		{ "src": "/storybook-static" }
-	]
+	"routes": [{ "src": "/storybook-static" }]
 }

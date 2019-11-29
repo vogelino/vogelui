@@ -1,33 +1,28 @@
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript';
-import external from 'rollup-plugin-peer-deps-external';
-import { terser } from 'rollup-plugin-terser';
-import { uglify } from 'rollup-plugin-uglify';
-import packageJSON from './package.json';
+import commonjs from 'rollup-plugin-commonjs'
+import resolve from 'rollup-plugin-node-resolve'
+import typescript from 'rollup-plugin-typescript'
+import external from 'rollup-plugin-peer-deps-external'
+import { terser } from 'rollup-plugin-terser'
+import { uglify } from 'rollup-plugin-uglify'
+import packageJSON from './package.json'
 
-const input = './src/index.tsx';
-const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, '.min.js');
+const input = './src/index.tsx'
+const minifyExtension = (pathToFile) => pathToFile.replace(/\.js$/, '.min.js')
 
-const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'], });
-const typescriptPlugin = typescript();
-const externalPlugin = external();
-const terserPlugin = terser();
-const uglifyPlugin = uglify();
+const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'] })
+const typescriptPlugin = typescript()
+const externalPlugin = external()
+const terserPlugin = terser()
+const uglifyPlugin = uglify()
 const commonjsPlugin = commonjs({
 	extensions: ['.js', '.jsx', '.ts', '.tsx'],
 	namedExports: {
-		'node_modules/react-is/index.js': [ 'ForwardRef' ],
-		'node_modules/prop-types/index.js': [ 'elementType' ],
+		'node_modules/react-is/index.js': ['ForwardRef'],
+		'node_modules/prop-types/index.js': ['elementType'],
 	},
-});
+})
 
-const commonPlugins = [
-	resolvePlugin,
-	typescriptPlugin,
-	externalPlugin,
-	commonjsPlugin,
-];
+const commonPlugins = [resolvePlugin, typescriptPlugin, externalPlugin, commonjsPlugin]
 
 export default [
 	// CommonJS
@@ -47,7 +42,7 @@ export default [
 			format: 'cjs',
 			sourcemap: true,
 		},
-		plugins: [ ...commonPlugins, uglifyPlugin ],
+		plugins: [...commonPlugins, uglifyPlugin],
 	},
 	// UMD
 	{
@@ -59,7 +54,7 @@ export default [
 			globals: {
 				react: 'React',
 				'react-dom': 'ReactDOM',
-			}
+			},
 		},
 		plugins: commonPlugins,
 	},
@@ -72,19 +67,16 @@ export default [
 			globals: {
 				react: 'React',
 				'react-dom': 'ReactDOM',
-			}
+			},
 		},
-		plugins: [
-			...commonPlugins,
-			terserPlugin,
-		]
+		plugins: [...commonPlugins, terserPlugin],
 	},
 	{
 		input,
 		output: {
 			file: packageJSON.module,
 			format: 'es',
-			exports: 'named'
+			exports: 'named',
 		},
 		plugins: commonPlugins,
 	},
@@ -93,11 +85,8 @@ export default [
 		output: {
 			file: minifyExtension(packageJSON.module),
 			format: 'es',
-			exports: 'named'
+			exports: 'named',
 		},
-		plugins: [
-			...commonPlugins,
-			terserPlugin,
-		]
+		plugins: [...commonPlugins, terserPlugin],
 	},
-];
+]
