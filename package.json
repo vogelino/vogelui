@@ -44,6 +44,7 @@
 		"@smooth-ui/core-sc": "^11.1.4",
 		"@storybook/addon-actions": "^5.2.6",
 		"@storybook/addon-links": "^5.2.6",
+		"@storybook/addon-viewport": "^5.2.6",
 		"@storybook/addons": "^5.2.6",
 		"@storybook/preset-typescript": "^1.1.0",
 		"@storybook/react": "^5.2.6",
