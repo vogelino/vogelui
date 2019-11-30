@@ -1,14 +1,14 @@
 import React from 'react'
-import Button from '../src/components/Button'
+import { Button } from '../src'
 import makeStory from '../src/utils/storybookUtil'
 
 export default {
-	title: 'Button',
+	title: 'Buttons',
 }
 
-export const text = makeStory(<Button>Hello Button</Button>)
+export const buttonWithText = makeStory(<Button>Hello Button</Button>)
 
-export const emoji = makeStory(
+export const buttonWithEmoji = makeStory(
 	<Button>
 		<span role="img" aria-label="so cool">
 			😀 😎 👍
