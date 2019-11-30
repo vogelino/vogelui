@@ -1,8 +1,8 @@
 import React, { ReactNode, PropsWithChildren, ReactElement, Component } from 'react'
-import { Box as SUIBox } from '@smooth-ui/core-sc'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from '@xstyled/styled-components'
+import theme from '../theme'
 
-const Container = styled(SUIBox)`
+export const Container = styled.box`
 	width: 100vw;
 	height: 100vh;
 	display: grid;
@@ -15,7 +15,9 @@ const StoryWrapper = ({
 	children,
 	...props
 }: PropsWithChildren<{}>): ReactElement<Component> => (
-	<Container {...props}>{children}</Container>
+	<ThemeProvider theme={theme}>
+		<Container {...props}>{children}</Container>
+	</ThemeProvider>
 )
 
 const makeStory = (content: ReactNode): Function => (): ReactNode => (

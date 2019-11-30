@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Boxer } from '../src'
+import Box from '../src/components/Box'
 import makeStory from '../src/utils/storybookUtil'
 
 export default {
@@ -7,9 +7,9 @@ export default {
 }
 
 export const usingBackgroundColor = makeStory(
-	<Boxer my={10}>
-		<Box backgroundColor="blue" width={100} height={100} />
-		<Box backgroundColor="red" width={100} height={100} />
-		<Box backgroundColor="green" width={100} height={100} />
-	</Boxer>,
+	<Box>
+		<Box my={10} backgroundColor="primary" width={100} height={100} />
+		<Box my={10} backgroundColor="red" width={100} height={100} />
+		<Box my={10} backgroundColor="green" width={100} height={100} />
+	</Box>,
 )
