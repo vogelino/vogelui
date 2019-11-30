@@ -8,7 +8,7 @@ const extendThemeWithDefaults = (theme?: DefaultTheme): DefaultTheme => {
 }
 
 type withThemeComponentProps = React.PropsWithChildren<{
-	theme?: DefaultTheme;
+	theme?: DefaultTheme
 }>
 
 export const withTheme = (Component: ComponentType): Function => ({

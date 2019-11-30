@@ -1,6 +1,4 @@
-import React, {
-	ReactNode, PropsWithChildren, ReactElement, Component,
-} from 'react'
+import React, { ReactNode, PropsWithChildren, ReactElement, Component } from 'react'
 import { Box as SUIBox } from '@smooth-ui/core-sc'
 import styled from 'styled-components'
 
