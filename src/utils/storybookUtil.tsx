@@ -1,4 +1,4 @@
-import React, { ReactNode, PropsWithChildren, ReactElement, Component } from 'react'
+import React, { PropsWithChildren, ReactElement, Component } from 'react'
 import styled, { ThemeProvider } from '@xstyled/styled-components'
 import theme from '../theme'
 
@@ -9,8 +9,16 @@ export const Container = styled.box`
 	align-content: center;
 	align-items: center;
 	justify-content: center;
-`
+	background: primary;
+	grid-gap: 2;
+	grid-template-columns: auto auto;
 
+	& > div {
+		display: grid;
+		justify-content: stretch;
+		grid-gap: 2;
+	}
+`
 const StoryWrapper = ({
 	children,
 	...props
@@ -20,8 +28,4 @@ const StoryWrapper = ({
 	</ThemeProvider>
 )
 
-const makeStory = (content: ReactNode): Function => (): ReactNode => (
-	<StoryWrapper>{content}</StoryWrapper>
-)
-
-export default makeStory
+export default StoryWrapper
