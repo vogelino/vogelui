@@ -8,10 +8,20 @@ export default {
 
 export const usingBackgroundColor = (): ReactNode => (
 	<StoryWrapper>
+		<Box gridColumn="1 / 3">
+			<Box backgroundColor="primary" height={100} />
+		</Box>
 		<Box>
-			<Box my={10} backgroundColor="primary" width={100} height={100} />
-			<Box my={10} backgroundColor="secondary" width={100} height={100} />
-			<Box my={10} backgroundColor="error" width={100} height={100} />
+			<Box backgroundColor="secondary" height={100} />
+		</Box>
+		<Box>
+			<Box backgroundColor="error" height={100} />
+		</Box>
+		<Box>
+			<Box backgroundColor="warning" height={100} />
+		</Box>
+		<Box>
+			<Box backgroundColor="success" height={100} />
 		</Box>
 	</StoryWrapper>
 )

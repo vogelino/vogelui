@@ -8,15 +8,17 @@ export const Container = styled.box`
 	display: grid;
 	align-content: center;
 	align-items: center;
-	justify-content: center;
+	justify-content: stretch;
 	background: primary;
-	grid-gap: 2;
+	grid-gap: 5;
 	grid-template-columns: auto auto;
+	max-width: 400px;
+	margin: 0 auto;
 
 	& > div {
 		display: grid;
 		justify-content: stretch;
-		grid-gap: 2;
+		grid-gap: 5;
 	}
 `
 const StoryWrapper = ({
