@@ -1,21 +1,33 @@
 import styled from '@xstyled/styled-components'
 import { th, variant } from '@xstyled/system'
 import { css } from 'styled-components'
-import { transparentize as alpha } from 'polished'
-
-const getAlphaVariant = (variant: string, alphaValue: number): {} => (p: {}): string =>
-	alpha(alphaValue, th(`buttons.${variant}.background`)(p))
 
 const getVariant = (variant: string): {} => css`
 	background-color: ${th(`buttons.${variant}.background`)};
 	color: ${th(`buttons.${variant}.color`)};
 	border: ${th(`buttons.${variant}.border`)};
-	transition: all 200ms ease-out;
-	box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4), 0 0 0 0 ${getAlphaVariant(variant, 0)};
+	transition: ${th(`buttons.${variant}.transition`)};
+	box-shadow: ${th(`buttons.${variant}.boxShadow`)};
 
 	&:focus {
-		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4),
-			0 0 0 ${th.space(1)} ${getAlphaVariant(variant, 0.6)};
+		background-color: ${th(`buttons.${variant}.focus.background`)};
+		color: ${th(`buttons.${variant}.focus.color`)};
+		border: ${th(`buttons.${variant}.focus.border`)};
+		box-shadow: ${th(`buttons.${variant}.focus.boxShadow`)};
+	}
+
+	&:hover {
+		background-color: ${th(`buttons.${variant}.hover.background`)};
+		color: ${th(`buttons.${variant}.hover.color`)};
+		border: ${th(`buttons.${variant}.hover.border`)};
+		box-shadow: ${th(`buttons.${variant}.hover.boxShadow`)};
+	}
+
+	&:active {
+		background-color: ${th(`buttons.${variant}.active.background`)};
+		color: ${th(`buttons.${variant}.active.color`)};
+		border: ${th(`buttons.${variant}.active.border`)};
+		box-shadow: ${th(`buttons.${variant}.active.boxShadow`)};
 	}
 `
 
@@ -55,7 +67,7 @@ const Button = styled.button`
 	border: none;
 	${variants};
 	${sizes};
-	border-radius: ${th.radius(2)};
+	border-radius: ${th('buttons.radius')}px;
 	cursor: pointer;
 	outline: none;
 `
