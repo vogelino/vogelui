@@ -1,9 +1,12 @@
+import React, { ReactNode, FunctionComponent, ReactElement } from 'react'
 import styled from '@xstyled/styled-components'
 import { th, variant } from '@xstyled/system'
-import { css } from 'styled-components'
+import { css, withTheme } from 'styled-components'
+import Ripples from 'react-ripples'
+import { Theme } from '../theme'
 
 const getVariant = (variant: string): {} => css`
-	background-color: ${th(`buttons.${variant}.background`)};
+	background: ${th(`buttons.${variant}.background`)};
 	color: ${th(`buttons.${variant}.color`)};
 	border: ${th(`buttons.${variant}.border`)};
 	transition: ${th(`buttons.${variant}.transition`)};
@@ -21,13 +24,6 @@ const getVariant = (variant: string): {} => css`
 		color: ${th(`buttons.${variant}.hover.color`)};
 		border: ${th(`buttons.${variant}.hover.border`)};
 		box-shadow: ${th(`buttons.${variant}.hover.boxShadow`)};
-	}
-
-	&:active {
-		background-color: ${th(`buttons.${variant}.active.background`)};
-		color: ${th(`buttons.${variant}.active.color`)};
-		border: ${th(`buttons.${variant}.active.border`)};
-		box-shadow: ${th(`buttons.${variant}.active.boxShadow`)};
 	}
 `
 
@@ -63,7 +59,19 @@ const sizes = variant({
 	default: 'md',
 	variants: { sm, md, xl },
 })
-const Button = styled.button`
+
+const ButtonWrapper = styled.spanBox`
+	border-radius: ${th('buttons.radius')}px;
+	overflow: hidden;
+	padding: 0px;
+
+	.react-ripples {
+		width: 100%;
+	}
+`
+
+const ButtonEl = styled.button`
+	width: 100%;
 	border: none;
 	${variants};
 	${sizes};
@@ -71,4 +79,39 @@ const Button = styled.button`
 	cursor: pointer;
 	outline: none;
 `
-export default Button
+
+type ButtonProps = {
+	variant?: 'primary' | 'success' | 'warning' | 'error' | 'basic'
+	children?: ReactNode | ReactElement
+	mx?: number
+	my?: number
+	mb?: number
+	mr?: number
+	mt?: number
+	ml?: number
+	size?: 'sm' | 'md' | 'xl'
+	theme: Theme
+}
+
+const Button: FunctionComponent<ButtonProps> = ({
+	children,
+	theme,
+	mx = 0,
+	my = 0,
+	mb = 0,
+	mr = 0,
+	mt = 0,
+	ml = 0,
+	variant = 'basic',
+	...otherProps
+}: ButtonProps) => (
+	<ButtonWrapper mx={mx} my={my} mb={mb} mr={mr} mt={mt} ml={ml}>
+		<Ripples color={theme.buttons[variant].ripple}>
+			<ButtonEl {...otherProps} theme={theme} variant={variant}>
+				{children}
+			</ButtonEl>
+		</Ripples>
+	</ButtonWrapper>
+)
+
+export default withTheme(Button)

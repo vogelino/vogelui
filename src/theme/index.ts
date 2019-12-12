@@ -30,7 +30,7 @@ type Borders = {
 	black?: BorderStyle
 }
 
-type Theme = {
+export type Theme = {
 	transformers?: {}
 	colors?: {}
 	fontSizes: number[]
@@ -92,7 +92,7 @@ type Theme = {
 	}
 	borderWidths?: number[]
 	borders: Borders
-	buttons?: {}
+	buttons: {}
 }
 
 // Variants
@@ -175,6 +175,7 @@ const createButtonThemes = (variants: string[]): ButtonTheme =>
 	variants.reduce((acc, v) => {
 		const color = colors[v]
 		const defaultState = {
+			ripple: color,
 			background: color,
 			color: invertColor(color, [
 				setLightness(0.95, color),
@@ -182,36 +183,22 @@ const createButtonThemes = (variants: string[]): ButtonTheme =>
 			]),
 			border: 'none',
 			transition: 'all 100ms ease-out',
-			boxShadow: `0 0 0 0 rgba(255, 255, 255, 0.4), 0 0 0 0 ${getAlphaVariant(
+			boxShadow: `0 0 0 0 rgba(255, 255, 255, 0.4), inset 0 0 0 0 ${getAlphaVariant(
 				color,
 				0,
-			)}, inset 0 0 0 0 ${getAlphaVariant(color, 0)}`,
+			)}`,
 		}
 		const hoverState = {
 			background: setLightness(0.95, defaultState.background),
 			color: setLightness(0.3, defaultState.background),
 			border: defaultState.border,
-			boxShadow: `0 0 0 0 rgba(255, 255, 255, 0.4), 0 0 0 0 ${getAlphaVariant(
-				color,
-				0,
-			)}, inset 0 0 0 2px ${defaultState.background}`,
+			boxShadow: `0 0 0 0 rgba(255, 255, 255, 0.4), inset 0 0 0 2px ${defaultState.background}`,
 		}
 		const focusState = {
-			background: defaultState.background,
-			color: defaultState.color,
-			border: defaultState.border,
-			boxShadow: `0 0 0 1px rgba(255, 255, 255, 0.4), 0 0 0 ${
-				space[1]
-			}px ${getAlphaVariant(
-				defaultState.background,
-				0.6,
-			)}, inset 0 0 0 0 ${getAlphaVariant(color, 0)}`,
-		}
-		const activeState = {
-			background: darken(0.15, defaultState.background),
-			color: defaultState.color,
-			border: defaultState.border,
-			boxShadow: defaultState.boxShadow,
+			background: hoverState.background,
+			color: hoverState.color,
+			border: hoverState.border,
+			boxShadow: `0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 0 0 4px ${defaultState.background}`,
 		}
 		return {
 			...acc,
@@ -219,7 +206,6 @@ const createButtonThemes = (variants: string[]): ButtonTheme =>
 				...defaultState,
 				hover: hoverState,
 				focus: focusState,
-				active: activeState,
 			},
 		}
 	}, {})
