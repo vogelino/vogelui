@@ -7,35 +7,49 @@ export default {
 	title: 'Buttons',
 }
 
-export const buttonWithText = (): ReactNode => (
-	<StoryWrapper>
+type ButtonStory = {
+	size?: 'sm' | 'md' | 'xl'
+	alignment?: 'left' | 'center' | 'right'
+	stretch?: boolean
+}
+
+const buttonStory = ({
+	size = 'md',
+	alignment = 'center',
+	stretch = false,
+}: ButtonStory): ReactNode => (
+	<StoryWrapper stretch={stretch}>
 		<Box>
-			<Button variant="basic" size="xl">
-				Basic large
+			<Button variant="basic" alignment={alignment} size={size}>
+				Basic {size}
 			</Button>
 		</Box>
 		<Box>
-			<Button variant="primary" size="xl">
-				Primary large
+			<Button variant="primary" alignment={alignment} size={size}>
+				Primary {size}
 			</Button>
 		</Box>
 		<Box>
-			<Button variant="success" size="xl">
-				Success large
+			<Button variant="success" alignment={alignment} size={size}>
+				Success {size}
 			</Button>
 		</Box>
 		<Box>
-			<Button variant="error" size="xl">
-				Error large
+			<Button variant="error" alignment={alignment} size={size}>
+				Error {size}
 			</Button>
 		</Box>
 		<Box gridColumn="span 2">
-			<Button variant="warning" size="xl">
-				Warning large
+			<Button variant="warning" alignment={alignment} size={size}>
+				Warning {size}
 			</Button>
 		</Box>
 	</StoryWrapper>
 )
+
+export const buttonSmall = (): ReactNode => buttonStory({ stretch: false, size: 'sm' })
+export const buttonMedium = (): ReactNode => buttonStory({ stretch: false, size: 'md' })
+export const buttonLarge = (): ReactNode => buttonStory({ stretch: false, size: 'xl' })
 
 export const buttonWithEmoji = (): ReactNode => (
 	<StoryWrapper>

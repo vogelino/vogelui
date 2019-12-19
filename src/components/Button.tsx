@@ -60,6 +60,24 @@ const sizes = variant({
 	variants: { sm, md, xl },
 })
 
+const left = css`
+	text-align: left;
+`
+
+const center = css`
+	text-align: center;
+`
+
+const right = css`
+	text-align: right;
+`
+
+const alignments = variant({
+	prop: 'alignment',
+	default: 'center',
+	variants: { left, center, right },
+})
+
 const ButtonWrapper = styled.spanBox`
 	border-radius: ${th('buttons.radius')}px;
 	overflow: hidden;
@@ -75,6 +93,7 @@ const ButtonEl = styled.button`
 	border: none;
 	${variants};
 	${sizes};
+	${alignments};
 	border-radius: ${th('buttons.radius')}px;
 	cursor: pointer;
 	outline: none;
@@ -82,6 +101,7 @@ const ButtonEl = styled.button`
 
 type ButtonProps = {
 	variant?: 'primary' | 'success' | 'warning' | 'error' | 'basic'
+	alignment?: 'left' | 'center' | 'right'
 	children?: ReactNode | ReactElement
 	mx?: number
 	my?: number
@@ -103,11 +123,17 @@ const Button: FunctionComponent<ButtonProps> = ({
 	mt = 0,
 	ml = 0,
 	variant = 'basic',
+	alignment = 'center',
 	...otherProps
 }: ButtonProps) => (
 	<ButtonWrapper mx={mx} my={my} mb={mb} mr={mr} mt={mt} ml={ml}>
 		<Ripples color={theme.buttons[variant].ripple}>
-			<ButtonEl {...otherProps} theme={theme} variant={variant}>
+			<ButtonEl
+				{...otherProps}
+				theme={theme}
+				variant={variant}
+				alignment={alignment}
+			>
 				{children}
 			</ButtonEl>
 		</Ripples>

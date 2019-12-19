@@ -1,5 +1,5 @@
 import { rpxTransformers } from '@xstyled/system'
-import { lighten, transparentize as alpha, setLightness, darken } from 'polished'
+import { lighten, transparentize as alpha, setLightness } from 'polished'
 import { invertColor } from '../utils/colorUtil'
 
 type BorderWidth = {

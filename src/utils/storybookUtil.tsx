@@ -2,6 +2,9 @@ import React, { PropsWithChildren, ReactElement, Component } from 'react'
 import styled, { ThemeProvider } from '@xstyled/styled-components'
 import theme from '../theme'
 
+const getStretchConfig = ({ stretch }): 'stretch' | 'start' =>
+	stretch ? 'stretch' : 'start'
+
 export const Container = styled.box`
 	width: 100vw;
 	height: 100vh;
@@ -10,23 +13,26 @@ export const Container = styled.box`
 	align-items: center;
 	justify-content: stretch;
 	background: primary;
-	grid-gap: 5;
+	grid-gap: 2;
 	grid-template-columns: auto auto;
-	max-width: 400px;
+	max-width: 300px;
 	margin: 0 auto;
 
 	& > div {
 		display: grid;
-		justify-content: stretch;
+		justify-content: ${getStretchConfig};
 		grid-gap: 5;
 	}
 `
 const StoryWrapper = ({
 	children,
+	stretch,
 	...props
-}: PropsWithChildren<{}>): ReactElement<Component> => (
+}: PropsWithChildren<{ stretch?: boolean }>): ReactElement<Component> => (
 	<ThemeProvider theme={theme}>
-		<Container {...props}>{children}</Container>
+		<Container {...props} stretch={stretch || undefined}>
+			{children}
+		</Container>
 	</ThemeProvider>
 )
 
