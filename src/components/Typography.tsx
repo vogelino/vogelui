@@ -1,83 +1,39 @@
-// import React from 'react'
-import styled from '@xstyled/styled-components'
-import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { variant } from '@xstyled/system'
+/** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
+import { ReactElement, PropsWithChildren } from 'react'
 
-const camelize = (str: string): string =>
-	str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
+type TypographyProps = PropsWithChildren<{
+	as?: string
+	variant: string
+}>
 
-type TypographyVariant =
-	| 'common'
-	| 'hero'
-	| 'h1'
-	| 'h2'
-	| 'h3'
-	| 'subhead'
-	| 'footnote'
-	| 'body'
-	| 'emphasis'
-	| 'caption'
-
-const propertyIf = (variant: TypographyVariant, propertyName: string) => ({
-	theme,
-}: {
-	theme: { typography: {} }
-}): FlattenSimpleInterpolation => {
-	const variantObj = theme.typography[variant]
-	if (!variantObj) return css``
-	const propResult = variantObj[camelize(propertyName)]
-	if (!propResult) return css``
-	return css`
-		${propertyName}: ${propResult};
-	`
+const variant2ElementMap = {
+	hero: 'h1',
+	h1: 'h1',
+	h2: 'h2',
+	h4: 'h3',
+	subhead: 'h4',
+	body: 'p',
+	emphasis: 'span',
+	footnote: 'span',
+	caption: 'span',
 }
 
-const getVariant = (variant: TypographyVariant): {} => css`
-	${propertyIf(variant, 'font-family')}
-	${propertyIf(variant, 'font-size')}
-	${propertyIf(variant, 'line-height')}
-	${propertyIf(variant, 'letter-spacing')}
-	${propertyIf(variant, 'font-weight')}
-	${propertyIf(variant, 'text-decoration')}
-	${propertyIf(variant, 'text-transform')}
-	${propertyIf(variant, 'margin')}
-`
+const getTagByVariant = (variant: string): string => variant2ElementMap[variant] || 'span'
 
-const typeVariants = [
-	'hero',
-	'h1',
-	'h2',
-	'h3',
-	'subhead',
-	'footnote',
-	'caption',
-	'body',
-	'emphasis',
-].reduce(
-	(acc, variant: TypographyVariant) => ({
-		...acc,
-		[variant]: getVariant(variant),
-	}),
-	{},
+const Typography = ({
+	variant = 'body',
+	as,
+	children,
+	...props
+}: TypographyProps): ReactElement => (
+	<Styled.div
+		as={as || getTagByVariant(variant)}
+		sx={{ variant: `typography.${variant}` }}
+		{...props}
+	>
+		{children}
+	</Styled.div>
 )
-
-const variants = variant({
-	prop: 'variant',
-	default: 'body',
-	variants: typeVariants,
-})
-
-const Typography = styled.pBox`
-	${propertyIf('common', 'font-family')}
-	${propertyIf('common', 'font-size')}
-	${propertyIf('common', 'line-height')}
-	${propertyIf('common', 'letter-spacing')}
-	${propertyIf('common', 'font-weight')}
-	${propertyIf('common', 'text-decoration')}
-	${propertyIf('common', 'text-transform')}
-	${propertyIf('common', 'margin')}
-	padding: 0;
-	${variants}
-`
 
 export default Typography

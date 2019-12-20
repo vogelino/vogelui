@@ -7,14 +7,14 @@ export default {
 }
 export const variants = (): ReactNode => (
 	<StoryWrapper>
-		<Typography variant="hero">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="h1">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="h2">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="h3">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="subhead">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="body">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="emphasis">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="footnote">The lazy fox jumps over the crazy dog</Typography>
-		<Typography variant="caption">The lazy fox jumps over the crazy dog</Typography>
+		<Typography variant="hero">Hero</Typography>
+		<Typography variant="h1">H1</Typography>
+		<Typography variant="h2">H2</Typography>
+		<Typography variant="h3">H3</Typography>
+		<Typography variant="subhead">Subhead</Typography>
+		<Typography variant="body">Body</Typography>
+		<Typography variant="emphasis">Emphasis</Typography>
+		<Typography variant="footnote">Footnote</Typography>
+		<Typography variant="caption">Caption</Typography>
 	</StoryWrapper>
 )

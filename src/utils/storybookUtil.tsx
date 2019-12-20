@@ -1,29 +1,39 @@
-import React, { PropsWithChildren, ReactElement, Component } from 'react'
-import styled, { ThemeProvider } from '@xstyled/styled-components'
+/** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
+import { PropsWithChildren, ReactElement, Component } from 'react'
+import { ThemeProvider } from 'theme-ui'
 import theme from '../theme'
 
 const getStretchConfig = ({ stretch }): 'stretch' | 'start' =>
 	stretch ? 'stretch' : 'start'
 
-export const Container = styled.box`
-	width: 100vw;
-	height: 100vh;
-	display: grid;
-	align-content: center;
-	align-items: center;
-	justify-content: stretch;
-	background: primary;
-	grid-gap: 2;
-	grid-template-columns: auto auto;
-	max-width: 300px;
-	margin: 0 auto;
+type ContainerProps = PropsWithChildren<{ stretch?: boolean }>
 
-	& > div {
-		display: grid;
-		justify-content: ${getStretchConfig};
-		grid-gap: 5;
-	}
-`
+export const Container = ({ children, stretch }: ContainerProps): ReactElement => (
+	<Styled.root
+		sx={{
+			width: '100vw',
+			height: '100vh',
+			display: 'grid',
+			alignContent: 'center',
+			alignItems: 'center',
+			justifyContent: 'stretch',
+			background: 'primary',
+			gridGap: '2',
+			gridTemplateColumns: 'auto auto',
+			maxWidth: '300px',
+			margin: '0 auto',
+			'& > div': {
+				display: 'grid',
+				justifyContent: getStretchConfig({ stretch }),
+				gridGap: 5,
+			},
+		}}
+	>
+		{children}
+	</Styled.root>
+)
+
 const StoryWrapper = ({
 	children,
 	stretch,
