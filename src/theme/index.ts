@@ -1,6 +1,7 @@
 import { rpxTransformers } from '@xstyled/system'
 import { lighten, transparentize as alpha, setLightness } from 'polished'
 import { invertColor } from '../utils/colorUtil'
+import typography from './typography'
 
 type BorderWidth = {
 	default?: string
@@ -33,12 +34,6 @@ type Borders = {
 export type Theme = {
 	transformers?: {}
 	colors?: {}
-	fontSizes: number[]
-	fontSizeVariants?: {
-		body?: number
-		display?: number
-		small?: number
-	}
 	space?: number[]
 	spaceVariants?: {
 		none?: number
@@ -55,34 +50,6 @@ export type Theme = {
 		small?: string
 		medium?: string
 		large?: string
-	}
-	fonts?: string[]
-	fontVariants?: {
-		ui?: string
-		body?: string
-		display?: string
-		code?: string
-	}
-	fontWeights?: number[]
-	fontWeightVariants?: {
-		extraLight?: number
-		light?: number
-		regular?: number
-		medium?: number
-		bold?: number
-		black?: number
-	}
-	lineHeights?: number[]
-	lineHeightVariants?: {
-		dense?: number
-		medium?: number
-		aerate?: number
-	}
-	letterSpacings?: Array<string | number>
-	letterSpacingVariants?: {
-		dense?: number | string
-		medium?: number | string
-		aerate?: number | string
 	}
 	radii?: number[]
 	radiiVariants?: {
@@ -122,13 +89,6 @@ const colors = {
 	...variants,
 	...greyscale,
 }
-
-// Font related
-const fontSizes = [8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88]
-const fonts = ['-apple-system', 'Georgia', 'Courrier', 'Helvetica']
-const fontWeights = [300, 400, 500, 600, 700, 800]
-const lineHeights = [1, 1.3, 1.5]
-const letterSpacings = ['-0.01rem', '0', '0.02rem']
 
 // Spacing & Layout
 const space = [2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88]
@@ -216,12 +176,6 @@ const theme: Theme = {
 		...rpxTransformers,
 	},
 	colors,
-	fontSizes,
-	fontSizeVariants: {
-		body: fontSizes[2],
-		display: fontSizes[4],
-		small: fontSizes[0],
-	},
 	space,
 	spaceVariants: {
 		none: 0,
@@ -238,34 +192,6 @@ const theme: Theme = {
 		small: `@media screen and (min-width: ${breakpoints[0]})`,
 		medium: `@media screen and (min-width: ${breakpoints[1]})`,
 		large: `@media screen and (min-width: ${breakpoints[2]})`,
-	},
-	fonts,
-	fontVariants: {
-		ui: fonts[0],
-		body: fonts[1],
-		display: fonts[2],
-		code: fonts[3],
-	},
-	fontWeights,
-	fontWeightVariants: {
-		extraLight: fontWeights[0],
-		light: fontWeights[1],
-		regular: fontWeights[2],
-		medium: fontWeights[3],
-		bold: fontWeights[4],
-		black: fontWeights[5],
-	},
-	lineHeights,
-	lineHeightVariants: {
-		dense: lineHeights[0],
-		medium: lineHeights[1],
-		aerate: lineHeights[2],
-	},
-	letterSpacings,
-	letterSpacingVariants: {
-		dense: letterSpacings[0],
-		medium: letterSpacings[1],
-		aerate: letterSpacings[2],
 	},
 	radii,
 	radiiVariants: {
@@ -284,6 +210,7 @@ const theme: Theme = {
 		},
 		...buttonsThemes,
 	},
+	...typography,
 }
 
 export default theme
