@@ -42,11 +42,11 @@ const Typography = ({
 
 export default Typography
 
-const createVariantComponent = (variant: string) => ({
+const createVariantComponent = (variant: string, baseProps: {} = {}) => ({
 	children,
 	...props
 }: TypographyProps): ReactElement => (
-	<Typography {...props} variant={variant}>
+	<Typography {...baseProps} {...props} variant={variant}>
 		{children}
 	</Typography>
 )
@@ -55,7 +55,7 @@ export const HeroTitle = createVariantComponent('hero')
 export const H1 = createVariantComponent('h1')
 export const H2 = createVariantComponent('h2')
 export const H3 = createVariantComponent('h3')
-export const Subhead = createVariantComponent('subhead')
+export const Subhead = createVariantComponent('subhead', { color: 'disabled' })
 export const Body = createVariantComponent('body')
 export const Emphasis = createVariantComponent('emphasis')
 export const Footnote = createVariantComponent('footnote')
