@@ -7,9 +7,9 @@ import theme from '../theme'
 const getStretchConfig = ({ stretch }): 'stretch' | 'start' =>
 	stretch ? 'stretch' : 'start'
 
-type ContainerProps = PropsWithChildren<{ stretch?: boolean }>
+type ContainerProps = PropsWithChildren<{}>
 
-export const Container = ({ children, stretch }: ContainerProps): ReactElement => (
+export const Container = ({ children }: ContainerProps): ReactElement => (
 	<Styled.root
 		sx={{
 			width: '100vw',
@@ -34,9 +34,7 @@ const StoryWrapper = ({
 	...props
 }: PropsWithChildren<{ stretch?: boolean }>): ReactElement<Component> => (
 	<ThemeProvider theme={theme}>
-		<Container {...props} stretch={stretch || undefined}>
-			{children}
-		</Container>
+		<Container {...props}>{children}</Container>
 	</ThemeProvider>
 )
 
