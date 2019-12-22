@@ -26,7 +26,7 @@ export const variants = (): ReactNode => (
 	<StoryWrapper>
 		<div>
 			<Label>Hero title</Label>
-			<HeroTitle color="primary">How to Tip at the Holidays?</HeroTitle>
+			<HeroTitle>How to Tip at the Holidays?</HeroTitle>
 
 			<Label>H1</Label>
 			<H1>Twitter and Facebook Want to Shift Power to Users. Or Do They?</H1>
@@ -48,7 +48,7 @@ export const variants = (): ReactNode => (
 				U.K. Parliament Advances Brexit Bill, All but Assuring January Exit
 			</Emphasis>
 
-			<Label>Sbuhead</Label>
+			<Label>Subhead</Label>
 			<Subhead>In Other News</Subhead>
 
 			<Label>Footnote</Label>

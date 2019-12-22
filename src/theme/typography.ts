@@ -12,9 +12,7 @@ type TypographyVariant = {
 type Typography = {
 	fontSizes: number[]
 	fonts?: {
-		body?: string
-		heading?: string
-		monospace?: string
+		[key: string]: string
 	}
 	fontWeights?: {
 		body?: number
