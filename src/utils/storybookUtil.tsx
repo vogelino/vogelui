@@ -22,13 +22,6 @@ export const Container = ({ children, stretch }: ContainerProps): ReactElement =
 			gridTemplateColumns: 'auto',
 			maxWidth: '720px',
 			margin: '0 auto',
-			'& > div': {
-				display: 'grid',
-				justifyContent: getStretchConfig({ stretch }),
-				gridTemplateColumns: '100px auto',
-				alignItems: 'center',
-				gridGap: 4,
-			},
 		}}
 	>
 		{children}
