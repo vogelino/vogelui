@@ -6,7 +6,7 @@ type TypographyVariant = {
 	fontWeight?: string | number
 	textDecoration?: string
 	textTransform?: string
-	margin?: string | number
+	mb?: string | number
 }
 
 type Typography = {
@@ -20,6 +20,7 @@ type Typography = {
 		body?: number
 		heading?: number
 		bold?: number
+		semibold?: number
 	}
 	lineHeights?: {
 		body?: number
@@ -42,27 +43,28 @@ type Typography = {
 	}
 }
 
-const fontSizes = [8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88]
+const fontSizes = [8, 14, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88]
 const fonts = {
-	body: '"-apple-system", sans-serif',
-	heading: '"Georgia", serif',
-	monospace: '"Courrier", serif',
+	body: 'system-ui, sans-serif',
+	heading: 'system-ui, sans-serif',
+	monospace: '"Courrier", monospace',
 }
 
 const fontWeights = {
-	body: 500,
-	bold: 700,
+	light: 300,
+	body: 400,
+	bold: 600,
 	heading: 800,
 }
 
 const lineHeights = {
-	heading: 1,
+	heading: 1.05,
 	body: 1.125,
 }
 
 const letterSpacing = {
 	heading: '0.025em',
-	body: '0',
+	body: '0.01em',
 }
 
 const fontVariantsCommon = {
@@ -73,7 +75,8 @@ const fontVariantsCommon = {
 	fontWeight: 'body',
 	fontSize: 'body',
 	lineHeight: 'body',
-	margin: 0,
+	m: 0,
+	mb: 1,
 }
 
 const typography: Typography = {
@@ -90,6 +93,7 @@ const typography: Typography = {
 			lineHeight: 'heading',
 			letterSpacing: 'heading',
 			fontWeight: 'heading',
+			mb: 4,
 		},
 		h1: {
 			...fontVariantsCommon,
@@ -97,7 +101,8 @@ const typography: Typography = {
 			fontSize: 5,
 			lineHeight: 'heading',
 			letterSpacing: 'heading',
-			fontWeight: 'bold',
+			fontWeight: 'heading',
+			mb: 3,
 		},
 		h2: {
 			...fontVariantsCommon,
@@ -105,7 +110,8 @@ const typography: Typography = {
 			fontSize: 4,
 			lineHeight: 'heading',
 			letterSpacing: 'heading',
-			fontWeight: 'bold',
+			fontWeight: 'heading',
+			mb: 3,
 		},
 		h3: {
 			...fontVariantsCommon,
@@ -114,14 +120,24 @@ const typography: Typography = {
 			lineHeight: 'heading',
 			letterSpacing: 'heading',
 			fontWeight: 'bold',
+			mb: 2,
 		},
-		caption: fontVariantsCommon,
-		body: fontVariantsCommon,
-		footnote: {
+		caption: {
 			...fontVariantsCommon,
 			fontSize: 1,
-			fontWeight: 'bold',
+		},
+		body: fontVariantsCommon,
+		subhead: {
+			...fontVariantsCommon,
+			fontSize: 1,
+			fontWeight: 700,
 			textTransform: 'uppercase',
+			letterSpacing: 'heading',
+		},
+		footnote: {
+			...fontVariantsCommon,
+			fontWeight: 'light',
+			fontSize: 1,
 		},
 		emphasis: {
 			fontWeight: 'bold',

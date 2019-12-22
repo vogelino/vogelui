@@ -4,7 +4,9 @@ import { ReactElement, PropsWithChildren } from 'react'
 
 type TypographyProps = PropsWithChildren<{
 	as?: string
-	variant: string
+	color?: string
+	variant?: string
+	mb?: number
 }>
 
 const variant2ElementMap = {
@@ -24,12 +26,14 @@ const getTagByVariant = (variant: string): string => variant2ElementMap[variant]
 const Typography = ({
 	variant = 'body',
 	as,
+	color = 'text',
+	mb = 0,
 	children,
 	...props
 }: TypographyProps): ReactElement => (
 	<Styled.div
 		as={as || getTagByVariant(variant)}
-		sx={{ variant: `typography.${variant}` }}
+		sx={{ variant: `typography.${variant}`, color, mb }}
 		{...props}
 	>
 		{children}

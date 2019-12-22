@@ -19,14 +19,15 @@ export const Container = ({ children, stretch }: ContainerProps): ReactElement =
 			alignItems: 'center',
 			justifyContent: 'stretch',
 			background: 'primary',
-			gridGap: '2',
-			gridTemplateColumns: 'auto auto',
-			maxWidth: '300px',
+			gridTemplateColumns: 'auto',
+			maxWidth: '720px',
 			margin: '0 auto',
 			'& > div': {
 				display: 'grid',
 				justifyContent: getStretchConfig({ stretch }),
-				gridGap: 5,
+				gridTemplateColumns: '100px auto',
+				alignItems: 'center',
+				gridGap: 4,
 			},
 		}}
 	>
