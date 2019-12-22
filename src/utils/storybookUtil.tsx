@@ -4,9 +4,6 @@ import { PropsWithChildren, ReactElement, Component } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import theme from '../theme'
 
-const getStretchConfig = ({ stretch }): 'stretch' | 'start' =>
-	stretch ? 'stretch' : 'start'
-
 type ContainerProps = PropsWithChildren<{}>
 
 export const Container = ({ children }: ContainerProps): ReactElement => (
