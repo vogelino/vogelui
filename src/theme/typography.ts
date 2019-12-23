@@ -115,7 +115,7 @@ const typography: Typography = {
 			...fontVariantsCommon,
 			fontFamily: 'heading',
 			fontSize: 3,
-			lineHeight: 'heading',
+			lineHeight: 'body',
 			letterSpacing: 'heading',
 			fontWeight: 'bold',
 			mb: 2,
