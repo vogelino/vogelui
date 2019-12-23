@@ -25,7 +25,7 @@ const Label = ({ children }: PropsWithChildren<{}>): ReactElement => (
 
 export const variants = (): ReactNode => (
 	<StoryWrapper>
-		<Table sx={{ borderSpacing: 24 }}>
+		<Table>
 			<TableRow>
 				<TableCell>
 					<Label>Hero title</Label>

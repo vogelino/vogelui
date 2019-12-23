@@ -8,9 +8,9 @@ const createColorScale = (color: string, colorName: string): ColorScale => ({
 	[colorName]: color,
 	[`${colorName}Light`]: lighten(0.15, color),
 	[`${colorName}ExtraLight`]: lighten(0.3, color),
-	[`${colorName}UltraLight`]: setLightness(0.95, color),
-	[`${colorName}Dark`]: darken(0.2, color),
-	[`${colorName}ExtraDark`]: setLightness(0.15, color),
+	[`${colorName}UltraLight`]: setLightness(0.97, color),
+	[`${colorName}Dark`]: darken(0.15, color),
+	[`${colorName}ExtraDark`]: setLightness(0.2, color),
 })
 
 interface BaseColors {
