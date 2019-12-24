@@ -18,7 +18,7 @@ export type Theme = {
 
 const theme: Theme = {
 	breakpoints: ['40em', '52em', '64em'],
-	space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+	space: [0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 72, 80, 128, 256, 512],
 	...typography,
 	colors,
 	styles: {

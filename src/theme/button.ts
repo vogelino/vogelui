@@ -1,14 +1,12 @@
 const buttonBaseProps = {
-	fontSize: 1,
-	fontFamily: 'body',
-	paddingLeft: 3,
-	paddingRight: 3,
-	paddingTop: 2,
-	paddingBottom: 2,
 	borderRadius: 4,
 	borderWidth: 0,
 	outline: 'none',
 	boxSizing: 'border-box',
+	fontFamily: 'body',
+	letterSpacing: '0.01em',
+	userSelect: 'none',
+	display: 'inline-block',
 }
 
 const buttonInteractiveProps = {
@@ -25,6 +23,32 @@ const buttonInteractiveProps = {
 }
 
 export default {
+	sizes: {
+		s: {
+			fontSize: 1,
+			lineHeight: '1em',
+			paddingLeft: 3,
+			paddingRight: 3,
+			paddingTop: 2,
+			paddingBottom: 2,
+		},
+		m: {
+			fontSize: 2,
+			lineHeight: '1em',
+			paddingLeft: 4,
+			paddingRight: 4,
+			paddingTop: 3,
+			paddingBottom: 3,
+		},
+		l: {
+			fontSize: 3,
+			lineHeight: '1em',
+			paddingLeft: 5,
+			paddingRight: 5,
+			paddingTop: 4,
+			paddingBottom: 4,
+		},
+	},
 	default: {
 		...buttonBaseProps,
 		...buttonInteractiveProps,
@@ -104,10 +128,12 @@ export default {
 		'&:hover': {
 			...buttonInteractiveProps['&:hover'],
 			backgroundColor: 'warningUltraLight',
+			boxShadow: (theme): string => `inset 0 0 0 1px ${theme.colors.warning}`,
 		},
 		'&:focus': {
 			...buttonInteractiveProps['&:focus'],
 			backgroundColor: 'warningUltraLight',
+			boxShadow: (theme): string => `inset 0 0 0 1px ${theme.colors.warning}`,
 		},
 		'&:active': {
 			backgroundColor: 'warningExtraLight',
