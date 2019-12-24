@@ -1,5 +1,6 @@
 import typography from './typography'
 import colors from './colors'
+import buttons from './button'
 
 export type Theme = {
 	breakpoints?: string[] | number[]
@@ -11,6 +12,7 @@ export type Theme = {
 		[key: string]: string
 	}
 	typography?: {}
+	buttons?: {}
 	styles?: {}
 }
 
@@ -22,8 +24,10 @@ const theme: Theme = {
 	styles: {
 		root: {
 			fontFamily: 'body',
+			fontSize: 'body',
 		},
 	},
+	buttons,
 }
 
 export default theme

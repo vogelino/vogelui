@@ -71,7 +71,7 @@ const fontVariantsCommon = {
 	textTransform: 'none',
 	letterSpacing: 'body',
 	fontWeight: 'body',
-	fontSize: 'body',
+	fontSize: 2,
 	lineHeight: 'body',
 	m: 0,
 	mb: 1,

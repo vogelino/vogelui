@@ -34,10 +34,10 @@ export const TableRow = ({
 }: TableRowProps): ReactElement => (
 	<Styled.tr
 		sx={{
-			'th:first-child, td:first-child': {
+			'th:first-of-type, td:first-of-type': {
 				borderRadius: '4px 0 0 4px',
 			},
-			'th:last-child, td:last-child': {
+			'th:last-of-type, td:last-of-type': {
 				borderRadius: '0 4px 4px 0',
 			},
 			...sx,
