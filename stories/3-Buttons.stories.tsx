@@ -144,3 +144,86 @@ export const variants = (): ReactNode => (
 		</Table>
 	</StoryWrapper>
 )
+
+export const sizesAndAlignments = (): ReactNode => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell>
+						<Subhead>Left</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Center</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Right</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Small</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button size="s" width={200} align="left" iconLeft="yes">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="s" width={200} align="center" iconLeft="yes">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="s" width={200} align="right" iconLeft="yes">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Medium</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button size="m" width={200} align="left" iconRight="yes">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="m" width={200} align="center" iconRight="yes">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="m" width={200} align="right" iconRight="yes">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Large</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button size="l" width={200} align="left">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="l" width={200} align="center">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="l" width={200} align="right">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)

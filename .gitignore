@@ -65,3 +65,6 @@ lib
 
 # Storybook build
 storybook-static
+
+# Dist folder
+dist
