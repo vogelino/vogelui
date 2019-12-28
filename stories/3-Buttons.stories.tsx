@@ -145,7 +145,7 @@ export const variants = (): ReactNode => (
 	</StoryWrapper>
 )
 
-export const sizesAndAlignments = (): ReactNode => (
+export const alignments = (): ReactNode => (
 	<StoryWrapper>
 		<Table>
 			<thead>
@@ -168,17 +168,17 @@ export const sizesAndAlignments = (): ReactNode => (
 						<Subhead>Small</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button size="s" width={200} align="left" iconLeft="yes">
+						<Button size="s" width={200} align="left">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="s" width={200} align="center" iconLeft="yes">
+						<Button size="s" width={200} align="center">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="s" width={200} align="right" iconLeft="yes">
+						<Button size="s" width={200} align="right">
 							Click me
 						</Button>
 					</TableCell>
@@ -188,17 +188,17 @@ export const sizesAndAlignments = (): ReactNode => (
 						<Subhead>Medium</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button size="m" width={200} align="left" iconRight="yes">
+						<Button size="m" width={200} align="left">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="m" width={200} align="center" iconRight="yes">
+						<Button size="m" width={200} align="center">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="m" width={200} align="right" iconRight="yes">
+						<Button size="m" width={200} align="right">
 							Click me
 						</Button>
 					</TableCell>
@@ -208,34 +208,200 @@ export const sizesAndAlignments = (): ReactNode => (
 						<Subhead>Large</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button
-							size="l"
-							width={200}
-							align="left"
-							iconRight="yes"
-							iconLeft="yes"
-						>
+						<Button size="l" width={200} align="left">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="l" width={200} align="center">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button size="l" width={200} align="right">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+
+export const autoWidthButtonWithIcons = (): ReactNode => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell>
+						<Subhead>On left</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>On right</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>On both sides</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Small</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconLeft="yes" size="s">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" size="s">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" iconLeft="yes" size="s">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Medium</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconLeft="yes" size="m">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" size="m">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" iconLeft="yes" size="m">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Large</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconLeft="yes" size="l">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" size="l">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button iconRight="yes" iconLeft="yes" size="l">
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+
+export const fixedWidthButtonWithIcons = (): ReactNode => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell>
+						<Subhead>On left</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>On right</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>On both sides</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Small</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconLeft="yes" size="s">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconRight="yes" size="s">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
 						<Button
-							size="l"
 							width={200}
 							align="center"
 							iconRight="yes"
 							iconLeft="yes"
+							size="s"
 						>
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Medium</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconLeft="yes" size="m">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconRight="yes" size="m">
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
 						<Button
-							size="l"
 							width={200}
-							align="right"
+							align="center"
 							iconRight="yes"
 							iconLeft="yes"
+							size="m"
+						>
+							Click me
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Large</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconLeft="yes" size="l">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button width={200} iconRight="yes" size="l">
+							Click me
+						</Button>
+					</TableCell>
+					<TableCell>
+						<Button
+							width={200}
+							align="center"
+							iconRight="yes"
+							iconLeft="yes"
+							size="l"
 						>
 							Click me
 						</Button>

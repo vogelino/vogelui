@@ -51,7 +51,7 @@ const Button = (props: ButtonProps): ReactElement => {
 		as = 'button',
 		size = 'm',
 		variant = 'default',
-		align = 'center',
+		align = 'left',
 		height = 'auto',
 		width = 'auto',
 		iconLeft,
