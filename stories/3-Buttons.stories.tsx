@@ -208,17 +208,35 @@ export const sizesAndAlignments = (): ReactNode => (
 						<Subhead>Large</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button size="l" width={200} align="left">
+						<Button
+							size="l"
+							width={200}
+							align="left"
+							iconRight="yes"
+							iconLeft="yes"
+						>
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="l" width={200} align="center">
+						<Button
+							size="l"
+							width={200}
+							align="center"
+							iconRight="yes"
+							iconLeft="yes"
+						>
 							Click me
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button size="l" width={200} align="right">
+						<Button
+							size="l"
+							width={200}
+							align="right"
+							iconRight="yes"
+							iconLeft="yes"
+						>
 							Click me
 						</Button>
 					</TableCell>

@@ -19,6 +19,7 @@ const Icon = styled.span`
 	width: 16px;
 	height: 16px;
 	display: inline-block;
+	align-self: center;
 	border-radius: 50%;
 	background: black;
 
