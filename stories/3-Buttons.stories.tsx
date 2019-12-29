@@ -435,7 +435,11 @@ export const buttonGroup = (): ReactNode => (
 							<Button variant="primary" size="s">
 								Click me
 							</Button>
-							<Button variant="primary" size="s">
+							<Button
+								variant="primary"
+								size="s"
+								iconRight="chevron-circle-down"
+							>
 								Click me
 							</Button>
 							<Button variant="primary" size="s">
@@ -450,7 +454,7 @@ export const buttonGroup = (): ReactNode => (
 					</TableCell>
 					<TableCell>
 						<Button.Group>
-							<Button variant="success" size="m">
+							<Button variant="success" size="m" iconLeft="check">
 								Click me
 							</Button>
 							<Button variant="success" size="m">
@@ -474,7 +478,7 @@ export const buttonGroup = (): ReactNode => (
 							<Button variant="warning" size="l">
 								Click me
 							</Button>
-							<Button variant="warning" size="l">
+							<Button variant="warning" size="l" iconRight="chevron-down">
 								Click me
 							</Button>
 						</Button.Group>
