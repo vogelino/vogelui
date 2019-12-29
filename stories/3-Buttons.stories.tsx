@@ -251,18 +251,18 @@ export const autoWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Small</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button iconLeft="yes" size="s">
-							Click me
+						<Button iconLeft="arrow-left" size="s">
+							Previous
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" size="s">
-							Click me
+						<Button iconRight="arrow-right" size="s">
+							Next
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" iconLeft="yes" size="s">
-							Click me
+						<Button iconRight="bars" iconLeft="chevron-down" size="s">
+							Menu
 						</Button>
 					</TableCell>
 				</TableRow>
@@ -271,18 +271,18 @@ export const autoWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Medium</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button iconLeft="yes" size="m">
-							Click me
+						<Button iconLeft="bell-slash" size="m">
+							Mute
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" size="m">
-							Click me
+						<Button iconRight="calendar-alt" size="m">
+							Add to calendar
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" iconLeft="yes" size="m">
-							Click me
+						<Button iconRight="cannabis" iconLeft="pills" size="m">
+							Take drugs
 						</Button>
 					</TableCell>
 				</TableRow>
@@ -291,18 +291,22 @@ export const autoWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Large</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button iconLeft="yes" size="l">
-							Click me
+						<Button iconLeft="check" size="l">
+							Confirm
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" size="l">
-							Click me
+						<Button iconRight="cloud-download-alt" size="l">
+							Download
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button iconRight="yes" iconLeft="yes" size="l">
-							Click me
+						<Button
+							iconRight="envelope-open-text"
+							iconLeft="ellipsis-h"
+							size="l"
+						>
+							Preferences
 						</Button>
 					</TableCell>
 				</TableRow>
@@ -334,24 +338,24 @@ export const fixedWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Small</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconLeft="yes" size="s">
-							Click me
+						<Button width={200} iconLeft="arrow-left" size="s">
+							Previous
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconRight="yes" size="s">
-							Click me
+						<Button width={200} iconRight="arrow-right" size="s">
+							Next
 						</Button>
 					</TableCell>
 					<TableCell>
 						<Button
-							width={200}
 							align="center"
-							iconRight="yes"
-							iconLeft="yes"
+							width={200}
+							iconRight="bars"
+							iconLeft="chevron-down"
 							size="s"
 						>
-							Click me
+							Menu
 						</Button>
 					</TableCell>
 				</TableRow>
@@ -360,24 +364,24 @@ export const fixedWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Medium</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconLeft="yes" size="m">
-							Click me
+						<Button width={200} iconLeft="bell-slash" size="m">
+							Mute
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconRight="yes" size="m">
-							Click me
+						<Button width={200} iconRight="calendar-alt" size="m">
+							Add to calendar
 						</Button>
 					</TableCell>
 					<TableCell>
 						<Button
-							width={200}
 							align="center"
-							iconRight="yes"
-							iconLeft="yes"
+							width={200}
+							iconRight="cannabis"
+							iconLeft="pills"
 							size="m"
 						>
-							Click me
+							Take drugs
 						</Button>
 					</TableCell>
 				</TableRow>
@@ -386,25 +390,94 @@ export const fixedWidthButtonWithIcons = (): ReactNode => (
 						<Subhead>Large</Subhead>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconLeft="yes" size="l">
-							Click me
+						<Button width={200} iconLeft="check" size="l">
+							Confirm
 						</Button>
 					</TableCell>
 					<TableCell>
-						<Button width={200} iconRight="yes" size="l">
-							Click me
+						<Button width={200} iconRight="cloud-download-alt" size="l">
+							Download
 						</Button>
 					</TableCell>
 					<TableCell>
 						<Button
-							width={200}
 							align="center"
-							iconRight="yes"
-							iconLeft="yes"
+							width={200}
+							iconRight="envelope-open-text"
+							iconLeft="ellipsis-h"
 							size="l"
 						>
-							Click me
+							Preferences
 						</Button>
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+
+export const buttonGroup = (): ReactNode => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell />
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Small</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button.Group>
+							<Button variant="primary" size="s">
+								Click me
+							</Button>
+							<Button variant="primary" size="s">
+								Click me
+							</Button>
+							<Button variant="primary" size="s">
+								Click me
+							</Button>
+						</Button.Group>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Medium</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button.Group>
+							<Button variant="success" size="m">
+								Click me
+							</Button>
+							<Button variant="success" size="m">
+								Click me
+							</Button>
+							<Button variant="success" size="m">
+								Click me
+							</Button>
+						</Button.Group>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Large</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button.Group>
+							<Button variant="warning" size="l">
+								Click me
+							</Button>
+							<Button variant="warning" size="l">
+								Click me
+							</Button>
+							<Button variant="warning" size="l">
+								Click me
+							</Button>
+						</Button.Group>
 					</TableCell>
 				</TableRow>
 			</tbody>

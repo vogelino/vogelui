@@ -13,7 +13,7 @@ const buttonInteractiveProps = {
 	boxShadow: 'inset 0 0 0 0 currentcolor',
 	cursor: 'pointer',
 	transition:
-		'box-shadow 100ms ease-out, background 100ms ease-out, color 100ms ease-out',
+		'box-shadow 100ms ease-out, background 100ms ease-out, color 100ms ease-out, border-radius 100ms ease-out',
 	'&:hover': {
 		boxShadow: 'inset 0 0 0 1px currentcolor',
 	},

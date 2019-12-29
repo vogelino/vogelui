@@ -91,7 +91,10 @@
 		"styled-components": "^4.4.1",
 		"@emotion/core": "^10.0.22",
 		"theme-ui": "^0.2.52",
-		"@mdx-js/react": "^1.5.2"
+		"@mdx-js/react": "^1.5.2",
+		"@fortawesome/fontawesome-svg-core": "^1.2.26",
+		"@fortawesome/free-solid-svg-icons": "^5.12.0",
+		"@fortawesome/react-fontawesome": "^0.1.8"
 	},
 	"husky": {
 		"hooks": {

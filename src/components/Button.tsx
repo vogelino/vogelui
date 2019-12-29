@@ -2,6 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import styled from '@emotion/styled'
 import { ReactElement, PropsWithChildren, ReactNode } from 'react'
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 
 type ButtonProps = PropsWithChildren<{
 	variant?: 'default' | 'primary' | 'success' | 'error' | 'warning' | 'disabled'
@@ -10,37 +11,38 @@ type ButtonProps = PropsWithChildren<{
 	align?: 'left' | 'center' | 'right'
 	height?: 'auto' | number
 	width?: 'auto' | number
-	iconLeft?: Function | string | ReactNode
-	iconRight?: Function | string | ReactNode
+	iconLeft?: FontAwesomeIconProps['icon']
+	iconRight?: FontAwesomeIconProps['icon']
 	sx?: {}
 }>
 
-const Icon = styled.span`
-	width: 16px;
-	height: 16px;
+const Icon = styled(FontAwesomeIcon)`
+	font-size: 1rem;
 	display: inline-block;
 	align-self: center;
-	border-radius: 50%;
-	background: black;
+
+	&.left {
+		margin-right: 8px;
+		justify-self: flex-start;
+	}
 
 	&.right {
 		justify-self: flex-end;
+		margin-left: 8px;
 	}
 `
 
 const ButtonText = styled.span`
-	display: inline-grid;
-	align-content: center;
+	text-align: ${({ align }: { align: string }): string => align};
+	width: 100%;
 `
 
 const getIcon = (
 	position: 'left' | 'right',
-	icon: ButtonProps['iconLeft'],
-	props: ButtonProps,
+	icon?: FontAwesomeIconProps['icon'] | null,
 ): ReactNode => {
 	if (!icon) return <i />
-	if (typeof icon === 'function') return icon(props, position)
-	if (typeof icon === 'string') return <Icon className={position} />
+	if (typeof icon === 'string') return <Icon className={position} icon={icon} />
 	return icon
 }
 
@@ -59,6 +61,7 @@ const Button = (props: ButtonProps): ReactElement => {
 	} = props
 	return (
 		<Styled.div
+			className="button"
 			as={as}
 			sx={{
 				variant: [`buttons.${variant}`, `buttons.sizes.${size}`],
@@ -73,24 +76,38 @@ const Button = (props: ButtonProps): ReactElement => {
 				sx={{
 					width: '100%',
 					height,
-					display: 'inline-grid',
 					textAlign: align,
 					verticalAlign: 'text-top',
-					gridTemplateColumns: (): string => {
-						if (align === 'center') return '24px auto 24px'
-						if (!iconLeft && !iconRight) return '0 auto 0'
-						if (iconLeft && !iconRight) return '24px auto 0'
-						if (!iconLeft && iconRight) return '0 auto 24px'
-						return '24px auto 24px'
-					},
+					display: 'inline-flex',
+					justifyItems: 'stretch',
 				}}
 			>
-				{getIcon('left', iconLeft, props)}
-				<ButtonText>{children}</ButtonText>
-				{getIcon('right', iconRight, props)}
+				{getIcon('left', iconLeft)}
+				<ButtonText align={align}>{children}</ButtonText>
+				{getIcon('right', iconRight)}
 			</Styled.div>
 		</Styled.div>
 	)
 }
 
+const ButtonGroupContainer = styled.div`
+	& .button:not(:hover):not(:focus):not(:active) {
+		box-shadow: -1px 0 0 0 rgba(0, 0, 0, 0.1);
+	}
+	& .button {
+		border-radius: 0;
+	}
+	& .button:first-of-type {
+		border-left: 0;
+		border-radius: 4px 0 0 4px;
+	}
+	& .button:last-of-type {
+		border-radius: 0 4px 4px 0;
+	}
+`
+const ButtonGroup = ({ children }: PropsWithChildren<{}>): ReactElement => (
+	<ButtonGroupContainer>{children}</ButtonGroupContainer>
+)
+
+Button.Group = ButtonGroup
 export default Button

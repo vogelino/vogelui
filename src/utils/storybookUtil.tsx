@@ -2,7 +2,11 @@
 import { jsx, Styled } from 'theme-ui'
 import { PropsWithChildren, ReactElement, Component } from 'react'
 import { ThemeProvider } from 'theme-ui'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import theme from '../theme'
+
+library.add(fas)
 
 type ContainerProps = PropsWithChildren<{}>
 
