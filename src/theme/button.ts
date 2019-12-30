@@ -1,3 +1,6 @@
+import colors from './colors'
+import { transparentize } from 'polished'
+
 const buttonBaseProps = {
 	borderRadius: 4,
 	borderWidth: 0,
@@ -9,17 +12,21 @@ const buttonBaseProps = {
 	display: 'inline-block',
 }
 
-const buttonInteractiveProps = {
-	boxShadow: 'inset 0 0 0 0 currentcolor',
-	cursor: 'pointer',
-	transition:
-		'box-shadow 100ms ease-out, background 100ms ease-out, color 100ms ease-out, border-radius 100ms ease-out',
-	'&:hover': {
-		boxShadow: 'inset 0 0 0 1px currentcolor',
-	},
-	'&:focus': {
-		boxShadow: 'inset 0 0 0 2px currentcolor',
-	},
+const buttonInteractiveProps = (color: string): {} => {
+	const col = colors[color]
+	const transCol0 = transparentize(0, col)
+	const transColFocus = transparentize(0.7, col)
+	return {
+		boxShadow: `inset 0 0 0 0 ${col}, 0 0 0 0 ${transCol0}`,
+		cursor: `pointer`,
+		transition: `box-shadow 100ms ease-out, background 100ms ease-out, color 100ms ease-out, border-radius 100ms ease-out`,
+		'&:hover': {
+			boxShadow: `inset 0 0 0 1px ${col}, 0 0 0 0 ${transCol0}`,
+		},
+		'&:focus': {
+			boxShadow: `inset 0 0 0 1px ${col}, 0 0 0 3px ${transColFocus}`,
+		},
+	}
 }
 
 export default {
@@ -51,7 +58,7 @@ export default {
 	},
 	default: {
 		...buttonBaseProps,
-		...buttonInteractiveProps,
+		...buttonInteractiveProps('primary'),
 		backgroundColor: 'primaryUltraLight',
 		color: 'primary',
 		'&:active': {
@@ -60,16 +67,16 @@ export default {
 	},
 	primary: {
 		...buttonBaseProps,
-		...buttonInteractiveProps,
+		...buttonInteractiveProps('primary'),
 		backgroundColor: 'primary',
 		color: 'white',
 		'&:hover': {
-			...buttonInteractiveProps['&:hover'],
+			...buttonInteractiveProps('primary')['&:hover'],
 			backgroundColor: 'primaryUltraLight',
 			color: 'primary',
 		},
 		'&:focus': {
-			...buttonInteractiveProps['&:focus'],
+			...buttonInteractiveProps('primary')['&:focus'],
 			backgroundColor: 'primaryUltraLight',
 			color: 'primary',
 		},
@@ -84,16 +91,16 @@ export default {
 	},
 	success: {
 		...buttonBaseProps,
-		...buttonInteractiveProps,
+		...buttonInteractiveProps('success'),
 		backgroundColor: 'success',
 		color: 'white',
 		'&:hover': {
-			...buttonInteractiveProps['&:hover'],
+			...buttonInteractiveProps('success')['&:hover'],
 			backgroundColor: 'successUltraLight',
 			color: 'success',
 		},
 		'&:focus': {
-			...buttonInteractiveProps['&:focus'],
+			...buttonInteractiveProps('success')['&:focus'],
 			backgroundColor: 'successUltraLight',
 			color: 'success',
 		},
@@ -103,16 +110,16 @@ export default {
 	},
 	error: {
 		...buttonBaseProps,
-		...buttonInteractiveProps,
+		...buttonInteractiveProps('error'),
 		backgroundColor: 'error',
 		color: 'white',
 		'&:hover': {
-			...buttonInteractiveProps['&:hover'],
+			...buttonInteractiveProps('error')['&:hover'],
 			backgroundColor: 'errorUltraLight',
 			color: 'error',
 		},
 		'&:focus': {
-			...buttonInteractiveProps['&:focus'],
+			...buttonInteractiveProps('error')['&:focus'],
 			backgroundColor: 'errorUltraLight',
 			color: 'error',
 		},
@@ -122,18 +129,17 @@ export default {
 	},
 	warning: {
 		...buttonBaseProps,
-		...buttonInteractiveProps,
+		...buttonInteractiveProps('warning'),
 		backgroundColor: 'warning',
 		color: 'warningExtraDark',
 		'&:hover': {
-			...buttonInteractiveProps['&:hover'],
+			...buttonInteractiveProps('warning')['&:hover'],
 			backgroundColor: 'warningUltraLight',
 			boxShadow: (theme): string => `inset 0 0 0 1px ${theme.colors.warning}`,
 		},
 		'&:focus': {
-			...buttonInteractiveProps['&:focus'],
+			...buttonInteractiveProps('warning')['&:focus'],
 			backgroundColor: 'warningUltraLight',
-			boxShadow: (theme): string => `inset 0 0 0 1px ${theme.colors.warning}`,
 		},
 		'&:active': {
 			backgroundColor: 'warningExtraLight',

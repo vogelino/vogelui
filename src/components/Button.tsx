@@ -95,14 +95,14 @@ const ButtonGroupContainer = styled.div`
 		box-shadow: -1px 0 0 0 rgba(0, 0, 0, 0.1);
 	}
 	& .button {
-		border-radius: 0;
+		border-radius: 1px;
 	}
 	& .button:first-of-type {
 		border-left: 0;
-		border-radius: 4px 0 0 4px;
+		border-radius: 4px 1px 1px 4px;
 	}
 	& .button:last-of-type {
-		border-radius: 0 4px 4px 0;
+		border-radius: 1px 4px 4px 1px;
 	}
 `
 const ButtonGroup = ({ children }: PropsWithChildren<{}>): ReactElement => (
