@@ -1,6 +1,7 @@
 import typography from './typography'
 import colors from './colors'
 import buttons from './button'
+import inputs from './input'
 
 export type Theme = {
 	breakpoints?: string[] | number[]
@@ -13,6 +14,7 @@ export type Theme = {
 	}
 	typography?: {}
 	buttons?: {}
+	inputs?: {}
 	styles?: {}
 }
 
@@ -28,6 +30,7 @@ const theme: Theme = {
 		},
 	},
 	buttons,
+	inputs,
 }
 
 export default theme
