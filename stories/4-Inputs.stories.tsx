@@ -28,7 +28,7 @@ export const variants = (): ReactNode => (
 			<tbody>
 				<TableRow>
 					<TableCell>
-						<Subhead>Default</Subhead>
+						<Subhead>Default & Primary</Subhead>
 					</TableCell>
 					<TableCell>
 						<Input size="s" initialValue="With value" />
@@ -38,20 +38,6 @@ export const variants = (): ReactNode => (
 					</TableCell>
 					<TableCell>
 						<Input size="l" placeholder="Custom" />
-					</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<Subhead>Primary</Subhead>
-					</TableCell>
-					<TableCell>
-						<Input size="s" variant="primary" initialValue="With value" />
-					</TableCell>
-					<TableCell>
-						<Input size="m" variant="primary" />
-					</TableCell>
-					<TableCell>
-						<Input size="l" variant="primary" placeholder="Custom" />
 					</TableCell>
 				</TableRow>
 				<TableRow>

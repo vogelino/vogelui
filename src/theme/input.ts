@@ -19,7 +19,6 @@ const inputInteractiveProps = (color: string): {} => {
 	const transColFocus = transparentize(0.7, col)
 	return {
 		boxShadow: `inset 0 0 0 0 ${col}, 0 0 0 0 ${transCol0}`,
-		cursor: `pointer`,
 		transition: `box-shadow 100ms ease-out, background 100ms ease-out, color 100ms ease-out, border-radius 100ms ease-out`,
 		'&:hover': {
 			boxShadow: `inset 0 0 0 1px ${col}, 0 0 0 0 ${transCol0}`,
