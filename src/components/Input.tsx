@@ -32,6 +32,7 @@ const Input = ({
 			onChange={(evt): undefined => changeHandler(evt.target.value)}
 			type={type}
 			sx={{ variant: [`inputs.${variant}`, `inputs.sizes.${size}`] }}
+			disabled={variant === 'disabled'}
 		/>
 	)
 }

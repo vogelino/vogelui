@@ -88,6 +88,7 @@ export default {
 		...buttonBaseProps,
 		backgroundColor: 'greyUltraLight',
 		color: 'greyLight',
+		cursor: 'not-allowed',
 	},
 	success: {
 		...buttonBaseProps,
