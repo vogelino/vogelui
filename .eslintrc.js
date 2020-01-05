@@ -2,12 +2,10 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:@typescript-eslint/recommended',
-		'prettier/@typescript-eslint',
 		'plugin:prettier/recommended',
 	],
-	parser: '@typescript-eslint/parser',
-	plugins: ['react', '@typescript-eslint', 'prettier'],
+	parser: 'babel-eslint',
+	plugins: ['react', 'prettier'],
 	settings: {
 		react: {
 			pragma: 'React',
@@ -23,7 +21,6 @@ module.exports = {
 		'no-tabs': 'off',
 		indent: 'off',
 		'react/jsx-indent': 'off',
-		'@typescript-eslint/indent': ['error', 'tab'],
 		semi: ['error', 'never'],
 	},
 }

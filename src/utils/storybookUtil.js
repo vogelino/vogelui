@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { PropsWithChildren, ReactElement, Component } from 'react'
+import PropTypes from 'prop-types'
 import { ThemeProvider } from 'theme-ui'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -8,9 +8,7 @@ import theme from '../theme'
 
 library.add(fas)
 
-type ContainerProps = PropsWithChildren<{}>
-
-export const Container = ({ children }: ContainerProps): ReactElement => (
+export const Container = ({ children }) => (
 	<Styled.root
 		sx={{
 			width: '100vw',
@@ -29,14 +27,18 @@ export const Container = ({ children }: ContainerProps): ReactElement => (
 	</Styled.root>
 )
 
-const StoryWrapper = ({
-	children,
-	stretch,
-	...props
-}: PropsWithChildren<{ stretch?: boolean }>): ReactElement<Component> => (
+Container.propTypes = {
+	children: PropTypes.node,
+}
+
+const StoryWrapper = ({ children, ...props }) => (
 	<ThemeProvider theme={theme}>
 		<Container {...props}>{children}</Container>
 	</ThemeProvider>
 )
+
+StoryWrapper.propTypes = {
+	children: PropTypes.node,
+}
 
 export default StoryWrapper

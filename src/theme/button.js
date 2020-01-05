@@ -1,5 +1,6 @@
 import colors from './colors'
 import { transparentize } from 'polished'
+import PropTypes from 'prop-types'
 
 const buttonBaseProps = {
 	borderRadius: 4,
@@ -12,7 +13,7 @@ const buttonBaseProps = {
 	display: 'inline-block',
 }
 
-const buttonInteractiveProps = (color: string): {} => {
+const buttonInteractiveProps = (color) => {
 	const col = colors[color]
 	const transCol0 = transparentize(0, col)
 	const transColFocus = transparentize(0.7, col)
@@ -29,7 +30,7 @@ const buttonInteractiveProps = (color: string): {} => {
 	}
 }
 
-export default {
+const buttons = {
 	sizes: {
 		s: {
 			fontSize: 1,
@@ -136,7 +137,7 @@ export default {
 		'&:hover': {
 			...buttonInteractiveProps('warning')['&:hover'],
 			backgroundColor: 'warningUltraLight',
-			boxShadow: (theme): string => `inset 0 0 0 1px ${theme.colors.warning}`,
+			boxShadow: (theme) => `inset 0 0 0 1px ${theme.colors.warning}`,
 		},
 		'&:focus': {
 			...buttonInteractiveProps('warning')['&:focus'],
@@ -147,3 +148,10 @@ export default {
 		},
 	},
 }
+
+export default buttons
+
+export const buttonSizeProp = PropTypes.oneOf(Object.keys(buttons.sizes))
+const variants = { ...buttons }
+delete variants.sizes
+export const buttonVariantProp = PropTypes.oneOf(Object.keys(variants))

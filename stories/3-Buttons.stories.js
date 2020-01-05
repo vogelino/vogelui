@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import Button from '../src/components/Button'
 import { Table, TableRow, TableCell, TableHeaderCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
@@ -8,7 +8,7 @@ export default {
 	title: 'Buttons',
 }
 
-export const variants = (): ReactNode => (
+export const variants = () => (
 	<StoryWrapper>
 		<Table>
 			<thead>
@@ -145,7 +145,7 @@ export const variants = (): ReactNode => (
 	</StoryWrapper>
 )
 
-export const alignments = (): ReactNode => (
+export const alignments = () => (
 	<StoryWrapper>
 		<Table>
 			<thead>
@@ -228,7 +228,7 @@ export const alignments = (): ReactNode => (
 	</StoryWrapper>
 )
 
-export const autoWidthButtonWithIcons = (): ReactNode => (
+export const autoWidthButtonWithIcons = () => (
 	<StoryWrapper>
 		<Table>
 			<thead>
@@ -315,7 +315,7 @@ export const autoWidthButtonWithIcons = (): ReactNode => (
 	</StoryWrapper>
 )
 
-export const fixedWidthButtonWithIcons = (): ReactNode => (
+export const fixedWidthButtonWithIcons = () => (
 	<StoryWrapper>
 		<Table>
 			<thead>
@@ -416,7 +416,7 @@ export const fixedWidthButtonWithIcons = (): ReactNode => (
 	</StoryWrapper>
 )
 
-export const buttonGroup = (): ReactNode => (
+export const buttonGroup = () => (
 	<StoryWrapper>
 		<Table>
 			<thead>

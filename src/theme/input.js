@@ -1,4 +1,5 @@
 import { transparentize } from 'polished'
+import PropTypes from 'prop-types'
 import colors from './colors'
 
 const inputBaseProps = {
@@ -13,7 +14,7 @@ const inputBaseProps = {
 	display: 'inline-block',
 }
 
-const inputInteractiveProps = (color: string): {} => {
+const inputInteractiveProps = (color) => {
 	const col = colors[color]
 	const transCol0 = transparentize(0, col)
 	const transColFocus = transparentize(0.7, col)
@@ -43,7 +44,7 @@ const defaultInput = {
 	...inputInteractiveProps('primary'),
 }
 
-export default {
+const inputs = {
 	sizes: {
 		s: {
 			fontSize: 1,
@@ -94,3 +95,10 @@ export default {
 		...inputInteractiveProps('warning'),
 	},
 }
+
+export default inputs
+
+export const inputSizeProp = PropTypes.oneOf(Object.keys(inputs.sizes))
+const variants = { ...inputs }
+delete variants.sizes
+export const inputVariantProp = PropTypes.oneOf(Object.keys(variants))

@@ -1,24 +1,17 @@
 /** @jsx jsx */
+import PropTypes from 'prop-types'
 import { jsx, Styled, useThemeUI } from 'theme-ui'
-import { ReactElement, useState, useRef, RefObject } from 'react'
+import { useState, useRef } from 'react'
+import Icon from './Icon'
+import { inputVariantProp, inputSizeProp } from '../theme/input'
 
-const useFocus = (): [RefObject<{ current?: { focus: Function } | null }>, Function] => {
-	const htmlElRef = useRef({ current: null, focus: (): undefined => undefined })
-	const setFocus = (): void => {
+const useFocus = () => {
+	const htmlElRef = useRef({ current: null, focus: () => undefined })
+	const setFocus = () => {
 		htmlElRef.current && htmlElRef.current.focus()
 	}
 
 	return [htmlElRef, setFocus]
-}
-
-type InputProps = {
-	value?: string
-	initialValue?: string
-	placeholder?: string
-	size?: 's' | 'm' | 'l'
-	variant?: 'default' | 'primary' | 'success' | 'error' | 'warning' | 'disabled'
-	type?: 'text' | 'email' | 'password' | 'number' | 'phone'
-	onChange?: Function
 }
 
 const Input = ({
@@ -28,8 +21,10 @@ const Input = ({
 	size = 'm',
 	variant = 'default',
 	type = 'text',
+	iconLeft,
+	iconRight,
 	onChange,
-}: InputProps): ReactElement => {
+}) => {
 	const [internalValue, setValue] = useState(initialValue)
 	const [hasFocus, setFocus] = useState(false)
 	const [inputRef, setInputFocus] = useFocus()
@@ -46,16 +41,18 @@ const Input = ({
 				...(hasFocus ? theme.inputs[variant]['&:focus'] : {}),
 				paddingTop: 0,
 				paddingBottom: 0,
+				display: 'flex',
 			}}
-			onClick={(): void => setInputFocus(true)}
+			onClick={() => setInputFocus(true)}
 		>
+			{iconLeft && <Icon defaultColor="disabled" position="left" icon={iconLeft} />}
 			<Styled.div
 				as="input"
 				value={finalValue}
 				placeholder={placeholder}
-				onChange={(evt): undefined => changeHandler(evt.target.value)}
-				onFocus={(): void => setFocus(true)}
-				onBlur={(): void => setFocus(false)}
+				onChange={(evt) => changeHandler(evt.target.value)}
+				onFocus={() => setFocus(true)}
+				onBlur={() => setFocus(false)}
 				type={type}
 				disabled={variant === 'disabled'}
 				ref={inputRef}
@@ -79,8 +76,23 @@ const Input = ({
 					},
 				}}
 			/>
+			{iconRight && (
+				<Icon defaultColor="disabled" position="right" icon={iconRight} />
+			)}
 		</Styled.div>
 	)
+}
+
+Input.propTypes = {
+	initialValue: PropTypes.string,
+	value: PropTypes.string,
+	placeholder: PropTypes.string,
+	variant: inputVariantProp,
+	type: PropTypes.oneOf(['text', 'email', 'password', 'phone']),
+	size: inputSizeProp,
+	iconLeft: Icon.propTypes.icon,
+	iconRight: Icon.propTypes.icon,
+	onChange: PropTypes.func,
 }
 
 export default Input

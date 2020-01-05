@@ -1,20 +1,21 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { ReactNode, PropsWithChildren, ReactElement } from 'react'
+import PropTypes from 'prop-types'
 import { Subhead } from '../src/components/Typography'
 import { Table, TableHeaderCell, TableRow, TableCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
+import { colorPropType } from '../src/theme/colors'
 
 export default {
 	title: 'Colors',
 }
 
 const Box = ({
-	children,
+	children = null,
 	sx = {},
 	color: backgroundColor = 'primary',
 	...props
-}: PropsWithChildren<{ color?: string; sx?: {} }>): ReactElement => (
+}) => (
 	<Styled.div
 		{...props}
 		sx={{ ...sx, backgroundColor, width: 40, height: 40, borderRadius: 4 }}
@@ -23,11 +24,21 @@ const Box = ({
 	</Styled.div>
 )
 
-const DefaultRow = ({ children }: PropsWithChildren<{}>): ReactElement => (
+Box.propTypes = {
+	children: PropTypes.node,
+	sx: PropTypes.shape({}),
+	color: colorPropType,
+}
+
+const DefaultRow = ({ children }) => (
 	<TableRow sx={{ backgroundColor: 'greyUltraLight' }}>{children}</TableRow>
 )
 
-export const Scales = (): ReactNode => (
+DefaultRow.propTypes = {
+	children: PropTypes.node.isRequired,
+}
+
+export const Scales = () => (
 	<StoryWrapper>
 		<div>
 			<Table>

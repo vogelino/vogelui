@@ -1,13 +1,8 @@
 /** @jsx jsx */
+import PropTypes from 'prop-types'
 import { jsx, Styled } from 'theme-ui'
-import { ReactElement, PropsWithChildren } from 'react'
-
-type TypographyProps = PropsWithChildren<{
-	as?: string
-	color?: string
-	variant?: string
-	mb?: number
-}>
+import { typographyVariantPropType } from '../theme/typography'
+import { colorPropType } from '../theme/colors'
 
 const variant2ElementMap = {
 	hero: 'h1',
@@ -21,7 +16,7 @@ const variant2ElementMap = {
 	caption: 'span',
 }
 
-const getTagByVariant = (variant: string): string => variant2ElementMap[variant] || 'span'
+const getTagByVariant = (variant) => variant2ElementMap[variant] || 'span'
 
 const Typography = ({
 	variant = 'body',
@@ -30,7 +25,7 @@ const Typography = ({
 	mb = 0,
 	children,
 	...props
-}: TypographyProps): ReactElement => (
+}) => (
 	<Styled.div
 		as={as || getTagByVariant(variant)}
 		sx={{ variant: `typography.${variant}`, color, mb }}
@@ -40,12 +35,19 @@ const Typography = ({
 	</Styled.div>
 )
 
+Typography.propTypes = {
+	children: PropTypes.node.isRequired,
+	sx: PropTypes.shape({}),
+	as: PropTypes.string,
+	variant: typographyVariantPropType,
+	color: colorPropType,
+	mb: PropTypes.number,
+	size: PropTypes.oneOf(['s', 'm', 'l']),
+}
+
 export default Typography
 
-const createVariantComponent = (variant: string, baseProps: {} = {}) => ({
-	children,
-	...props
-}: TypographyProps): ReactElement => (
+const createVariantComponent = (variant, baseProps = {}) => ({ children, ...props }) => (
 	<Typography {...baseProps} {...props} variant={variant}>
 		{children}
 	</Typography>

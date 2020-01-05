@@ -1,10 +1,7 @@
 import { lighten, setLightness, darken } from 'polished'
+import PropTypes from 'prop-types'
 
-interface ColorScale {
-	[key: string]: string
-}
-
-const createColorScale = (color: string, colorName: string): ColorScale => ({
+const createColorScale = (color, colorName) => ({
 	[colorName]: color,
 	[`${colorName}Light`]: lighten(0.15, color),
 	[`${colorName}ExtraLight`]: lighten(0.3, color),
@@ -13,11 +10,7 @@ const createColorScale = (color: string, colorName: string): ColorScale => ({
 	[`${colorName}ExtraDark`]: setLightness(0.2, color),
 })
 
-interface BaseColors {
-	[key: string]: string
-}
-
-const baseColors: BaseColors = {
+const baseColors = {
 	black: '#000',
 	white: '#fff',
 	...createColorScale('#2980B9', 'primary'),
@@ -33,7 +26,11 @@ const semanticColors = {
 	disabled: baseColors.greyLight,
 }
 
-export default {
+const allColors = {
 	...baseColors,
 	...semanticColors,
 }
+
+export default allColors
+
+export const colorPropType = PropTypes.oneOf(Object.keys(allColors))

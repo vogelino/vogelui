@@ -1,45 +1,4 @@
-type TypographyVariant = {
-	fontFamily?: string
-	fontSize?: string | number
-	lineHeight?: string | number
-	letterSpacing?: string | number
-	fontWeight?: string | number
-	textDecoration?: string
-	textTransform?: string
-	mb?: string | number
-}
-
-type Typography = {
-	fontSizes: number[]
-	fonts?: {
-		[key: string]: string
-	}
-	fontWeights?: {
-		body?: number
-		heading?: number
-		bold?: number
-		semibold?: number
-	}
-	lineHeights?: {
-		body?: number
-		heading?: number
-	}
-	letterSpacing?: {
-		body?: number | string
-		heading?: number | string
-	}
-	typography?: {
-		hero?: TypographyVariant
-		h1?: TypographyVariant
-		h2?: TypographyVariant
-		h3?: TypographyVariant
-		subhead?: TypographyVariant
-		footnote?: TypographyVariant
-		body?: TypographyVariant
-		emphasis?: TypographyVariant
-		caption?: TypographyVariant
-	}
-}
+import PropTypes from 'prop-types'
 
 const fontSizes = [8, 14, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88]
 const fonts = {
@@ -77,7 +36,7 @@ const fontVariantsCommon = {
 	mb: 1,
 }
 
-const typography: Typography = {
+const typography = {
 	fontSizes,
 	fonts,
 	fontWeights,
@@ -144,3 +103,7 @@ const typography: Typography = {
 }
 
 export default typography
+
+export const typographyVariantPropType = PropTypes.oneOf(
+	Object.keys(typography.typography),
+)

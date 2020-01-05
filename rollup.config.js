@@ -1,6 +1,6 @@
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript'
+import babel from 'rollup-plugin-babel'
 import external from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
 import { uglify } from 'rollup-plugin-uglify'
@@ -9,20 +9,20 @@ import packageJSON from './package.json'
 const input = './src/index.tsx'
 const minifyExtension = (pathToFile) => pathToFile.replace(/\.js$/, '.min.js')
 
-const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'] })
-const typescriptPlugin = typescript()
+const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json'] })
+const babelPlugin = babel()
 const externalPlugin = external()
 const terserPlugin = terser()
 const uglifyPlugin = uglify()
 const commonjsPlugin = commonjs({
-	extensions: ['.js', '.jsx', '.ts', '.tsx'],
+	extensions: ['.js'],
 	namedExports: {
 		'node_modules/react-is/index.js': ['ForwardRef'],
 		'node_modules/prop-types/index.js': ['elementType'],
 	},
 })
 
-const commonPlugins = [resolvePlugin, typescriptPlugin, externalPlugin, commonjsPlugin]
+const commonPlugins = [resolvePlugin, babelPlugin, externalPlugin, commonjsPlugin]
 
 export default [
 	// CommonJS
