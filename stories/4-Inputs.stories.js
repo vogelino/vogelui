@@ -121,7 +121,21 @@ export const withIcons = () => (
 			<tbody>
 				<TableRow>
 					<TableCell>
-						<Subhead>Default & Primary</Subhead>
+						<Subhead>Default icon color</Subhead>
+					</TableCell>
+					<TableCell>
+						<Input size="s" iconRight="phone" iconLeft="search" />
+					</TableCell>
+					<TableCell>
+						<Input size="m" iconRight="phone" iconLeft="search" />
+					</TableCell>
+					<TableCell>
+						<Input size="l" iconRight="phone" iconLeft="search" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Custom icon color</Subhead>
 					</TableCell>
 					<TableCell>
 						<Input
@@ -147,116 +161,26 @@ export const withIcons = () => (
 				</TableRow>
 				<TableRow>
 					<TableCell>
-						<Subhead>Disabled</Subhead>
+						<Subhead>With tooltip</Subhead>
 					</TableCell>
 					<TableCell>
 						<Input
 							size="s"
-							variant="disabled"
-							iconRight="phone"
+							iconRight={{ icon: 'phone', color: 'primary' }}
 							iconLeft="search"
 						/>
 					</TableCell>
 					<TableCell>
 						<Input
 							size="m"
-							variant="disabled"
-							iconRight="phone"
+							iconRight={{ icon: 'phone', color: 'primary' }}
 							iconLeft="search"
 						/>
 					</TableCell>
 					<TableCell>
 						<Input
 							size="l"
-							variant="disabled"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<Subhead>Success</Subhead>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="s"
-							variant="success"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="m"
-							variant="success"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="l"
-							variant="success"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<Subhead>Error</Subhead>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="s"
-							variant="error"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="m"
-							variant="error"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="l"
-							variant="error"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<Subhead>Warning</Subhead>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="s"
-							variant="warning"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="m"
-							variant="warning"
-							iconRight="phone"
-							iconLeft="search"
-						/>
-					</TableCell>
-					<TableCell>
-						<Input
-							size="l"
-							variant="warning"
-							iconRight="phone"
+							iconRight={{ icon: 'phone', color: 'primary' }}
 							iconLeft="search"
 						/>
 					</TableCell>
