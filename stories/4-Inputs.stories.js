@@ -166,21 +166,33 @@ export const withIcons = () => (
 					<TableCell>
 						<Input
 							size="s"
-							iconRight={{ icon: 'phone', color: 'primary' }}
+							iconRight={{
+								icon: 'phone',
+								color: 'primary',
+								tooltip: { text: 'Hellooooo' },
+							}}
 							iconLeft="search"
 						/>
 					</TableCell>
 					<TableCell>
 						<Input
 							size="m"
-							iconRight={{ icon: 'phone', color: 'primary' }}
+							iconRight={{
+								icon: 'phone',
+								color: 'primary',
+								tooltip: { text: 'Hellooooo' },
+							}}
 							iconLeft="search"
 						/>
 					</TableCell>
 					<TableCell>
 						<Input
 							size="l"
-							iconRight={{ icon: 'phone', color: 'primary' }}
+							iconRight={{
+								icon: 'phone',
+								color: 'primary',
+								tooltip: { text: 'Hellooooo' },
+							}}
 							iconLeft="search"
 						/>
 					</TableCell>

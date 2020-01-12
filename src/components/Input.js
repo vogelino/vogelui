@@ -4,6 +4,7 @@ import { jsx, Styled, useThemeUI } from 'theme-ui'
 import { useState, useRef } from 'react'
 import Icon from './Icon'
 import { inputVariantProp, inputSizeProp } from '../theme/input'
+import Tooltip from './Tooltip'
 
 const useFocus = () => {
 	const htmlElRef = useRef({ current: null, focus: () => undefined })
@@ -12,6 +13,12 @@ const useFocus = () => {
 	}
 
 	return [htmlElRef, setFocus]
+}
+
+const getIconDOM = (icon, position) => {
+	if (!icon) return null
+	const iconEl = <Icon defaultColor="disabled" position={position} icon={icon} />
+	return icon.tooltip ? <Tooltip {...icon.tooltip}>{iconEl}</Tooltip> : iconEl
 }
 
 const Input = ({
@@ -45,7 +52,7 @@ const Input = ({
 			}}
 			onClick={() => setInputFocus(true)}
 		>
-			{iconLeft && <Icon defaultColor="disabled" position="left" icon={iconLeft} />}
+			{getIconDOM(iconLeft, 'left')}
 			<Styled.div
 				as="input"
 				value={finalValue}
@@ -76,9 +83,7 @@ const Input = ({
 					},
 				}}
 			/>
-			{iconRight && (
-				<Icon defaultColor="disabled" position="right" icon={iconRight} />
-			)}
+			{getIconDOM(iconRight, 'right')}
 		</Styled.div>
 	)
 }

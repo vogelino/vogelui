@@ -13,7 +13,7 @@ const TooltipWrapper = ({
 }) => (
 	<Styled.div
 		sx={{
-			display: 'inline-block',
+			display: 'inherit',
 			position: 'relative',
 			...sx,
 		}}
