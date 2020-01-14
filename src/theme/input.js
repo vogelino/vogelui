@@ -9,7 +9,7 @@ const inputBaseProps = {
 	boxSizing: 'border-box',
 	fontFamily: 'body',
 	lineHeight: 'body',
-	letterSpacing: '0.01em',
+	letterSpacing: 'body',
 	userSelect: 'none',
 	display: 'inline-block',
 }

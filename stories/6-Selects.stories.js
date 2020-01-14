@@ -29,7 +29,7 @@ export const examples = () => (
 						<Subhead>Empty</Subhead>
 					</TableCell>
 					<TableCell width="70%">
-						<Select options={options} />
+						<Select options={options} defaultIsExpanded={true} />
 					</TableCell>
 				</TableRow>
 				<TableRow>
@@ -37,7 +37,11 @@ export const examples = () => (
 						<Subhead>With initial value</Subhead>
 					</TableCell>
 					<TableCell>
-						<Select options={options} defaultValue={options[0]} />
+						<Select
+							options={options}
+							defaultValue={options[0]}
+							variant="error"
+						/>
 					</TableCell>
 				</TableRow>
 				<TableRow>
@@ -45,7 +49,12 @@ export const examples = () => (
 						<Subhead>Clearable</Subhead>
 					</TableCell>
 					<TableCell>
-						<Select options={options} defaultValue={options[0]} isClearable />
+						<Select
+							options={options}
+							defaultValue={options[0]}
+							isClearable
+							variant="success"
+						/>
 					</TableCell>
 				</TableRow>
 				<TableRow>
@@ -58,6 +67,7 @@ export const examples = () => (
 							placeholder="Type to search"
 							isSearchable
 							isClearable
+							variant="warning"
 						/>
 					</TableCell>
 				</TableRow>
