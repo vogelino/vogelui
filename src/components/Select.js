@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx, useThemeUI } from 'theme-ui'
 import ReactSelect from 'react-select'
-import { lighten, darken } from 'polished'
+import { lighten, darken, transparentize } from 'polished'
 
 const getTheme = (theme) => (reactSelectTheme) => ({
 	...reactSelectTheme,
@@ -55,6 +55,28 @@ const getStyles = (variant, theme) => ({
 		'&:hover': {
 			color: !state.isSelected && theme.colors.primary,
 		},
+	}),
+	multiValue: (styles, { isDisabled }) => ({
+		...styles,
+		...(!isDisabled
+			? { backgroundColor: transparentize(0.8, theme.colors[variant]) }
+			: {}),
+	}),
+	multiValueLabel: (styles, { isDisabled }) => ({
+		...styles,
+		color: !isDisabled ? theme.colors[variant] : theme.colors.grey,
+	}),
+	multiValueRemove: (styles, { isDisabled }) => ({
+		...styles,
+		color: !isDisabled ? theme.colors[variant] : theme.colors.grey,
+		...(!isDisabled
+			? {
+					':hover': {
+						backgroundColor: theme.colors[variant],
+						color: 'white',
+					},
+			  }
+			: {}),
 	}),
 })
 

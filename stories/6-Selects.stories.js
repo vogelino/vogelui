@@ -79,6 +79,37 @@ export const examples = () => (
 						/>
 					</TableCell>
 				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Multiple values</Subhead>
+					</TableCell>
+					<TableCell>
+						<Select
+							options={options}
+							defaultValue={[options[0], options[1]]}
+							placeholder="Type to search"
+							isSearchable
+							isClearable
+							isMulti
+						/>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Multiple values disabled</Subhead>
+					</TableCell>
+					<TableCell>
+						<Select
+							options={options}
+							defaultValue={[options[0], options[1]]}
+							placeholder="Type to search"
+							isSearchable
+							isClearable
+							isMulti
+							isDisabled
+						/>
+					</TableCell>
+				</TableRow>
 			</tbody>
 		</Table>
 	</StoryWrapper>
