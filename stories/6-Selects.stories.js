@@ -29,7 +29,15 @@ export const examples = () => (
 						<Subhead>Empty</Subhead>
 					</TableCell>
 					<TableCell width="70%">
-						<Select options={options} defaultIsExpanded={true} />
+						<Select options={options} />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Disabled</Subhead>
+					</TableCell>
+					<TableCell>
+						<Select options={options} isDisabled />
 					</TableCell>
 				</TableRow>
 				<TableRow>

@@ -35,6 +35,7 @@ const getStyles = (variant, theme) => ({
 		lineHeight: theme.lineHeights[theme.inputs[variant].lineHeight],
 		letterSpacing: theme.letterSpacing[theme.inputs[variant].letterSpacing],
 		userSelect: theme.inputs[variant].userSelect,
+		'input::selection': theme.inputs[variant]['&::selection'],
 	}),
 	control: (provided, state) => ({
 		...provided,
@@ -43,6 +44,7 @@ const getStyles = (variant, theme) => ({
 		transition: theme.inputs[variant].transition,
 		...(state.isFocused ? theme.inputs[variant]['&:focus'] : {}),
 		'&:hover': theme.inputs[variant]['&:hover'],
+		cursor: state.isDisabled ? 'not-allowed' : 'pointer',
 	}),
 	placeholder: () => ({
 		color: theme.colors[theme.inputs[variant]['&::placeholder'].color],
