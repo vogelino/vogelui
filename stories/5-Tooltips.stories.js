@@ -9,6 +9,45 @@ export default {
 	title: 'Tooltips',
 }
 
+export const variants = () => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell>
+						<Subhead>Dark</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell sx={{ background: 'black' }}>
+						<Subhead>Light</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Tooltip
+							text="More information"
+							variant="dark"
+							position="right-center"
+						>
+							<Button>Hover me</Button>
+						</Tooltip>
+					</TableCell>
+					<TableCell sx={{ background: 'black' }}>
+						<Tooltip
+							text="More information"
+							variant="light"
+							position="right-center"
+						>
+							<Button>Hover me</Button>
+						</Tooltip>
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+
 export const positions = () => (
 	<StoryWrapper>
 		<Table>

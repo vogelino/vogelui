@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 import { useState } from 'react'
 
 const noFunc = (_) => _
@@ -80,7 +80,7 @@ const getPositionStyles = (position = 'top-center') => {
 	}
 }
 
-const TooltipStrip = ({ text = '', isVisible, position }) => (
+const TooltipStrip = ({ text = '', isVisible, position, variant = 'dark', theme }) => (
 	<Styled.div
 		sx={{
 			opacity: isVisible ? 1 : 0,
@@ -88,6 +88,9 @@ const TooltipStrip = ({ text = '', isVisible, position }) => (
 			position: 'absolute',
 			zIndex: 1,
 			variant: 'tooltips',
+			...(variant === 'dark'
+				? theme.tooltips.variants.dark
+				: theme.tooltips.variants.light),
 			...getPositionStyles(position),
 		}}
 	>
@@ -97,9 +100,18 @@ const TooltipStrip = ({ text = '', isVisible, position }) => (
 
 TooltipStrip.propTypes = {
 	sx: PropTypes.shape({}),
+	theme: PropTypes.shape({
+		tooltips: PropTypes.shape({
+			variants: PropTypes.shape({
+				light: PropTypes.shape({}),
+				dark: PropTypes.shape({}),
+			}),
+		}),
+	}).isRequired,
 	children: PropTypes.node,
 	text: PropTypes.string.isRequired,
 	isVisible: PropTypes.bool,
+	variant: PropTypes.oneOf(['light', 'dark']),
 	position: PropTypes.oneOf([
 		'top-left',
 		'top-center',
@@ -116,15 +128,22 @@ TooltipStrip.propTypes = {
 	]),
 }
 
-const Tooltip = ({ sx = {}, children = '', text = '', position }) => {
+const Tooltip = ({ sx = {}, children = '', text = '', position, variant }) => {
 	const [isVisible, setIsVisible] = useState(false)
+	const { theme } = useThemeUI()
 	return (
 		<TooltipWrapper
 			sx={sx}
 			onMouseEnter={() => setIsVisible(true)}
 			onMouseLeave={() => setIsVisible(false)}
 		>
-			<TooltipStrip text={text} position={position} isVisible={isVisible} />
+			<TooltipStrip
+				text={text}
+				position={position}
+				isVisible={isVisible}
+				variant={variant}
+				theme={theme}
+			/>
 			{children}
 		</TooltipWrapper>
 	)
@@ -135,6 +154,7 @@ Tooltip.propTypes = {
 	children: PropTypes.node,
 	text: TooltipStrip.propTypes.text,
 	position: TooltipStrip.propTypes.position,
+	variant: TooltipStrip.propTypes.variant,
 }
 
 export default Tooltip
