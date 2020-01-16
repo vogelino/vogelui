@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 import styled from '@emotion/styled'
 import Icon from './Icon'
 import { buttonVariantProp, buttonSizeProp } from '../theme/button'
@@ -21,35 +21,40 @@ const Button = ({
 	width = 'auto',
 	iconLeft,
 	iconRight,
-}) => (
-	<Styled.div
-		className="button"
-		as={as}
-		sx={{
-			variant: [`buttons.${variant}`, `buttons.sizes.${size}`],
-			height,
-			width,
-			...sx,
-		}}
-		disabled={variant === 'disabled'}
-	>
+}) => {
+	const { theme } = useThemeUI()
+	return (
 		<Styled.div
-			as="span"
+			className="button"
+			as={as}
 			sx={{
-				width: '100%',
+				whiteSpace: 'nowrap',
+				...theme.buttons[variant],
+				...theme.buttons.sizes[size],
 				height,
-				textAlign: align,
-				verticalAlign: 'text-top',
-				display: 'inline-flex',
-				justifyItems: 'stretch',
+				width,
+				...sx,
 			}}
+			disabled={variant === 'disabled'}
 		>
-			<Icon position="left" icon={iconLeft} />
-			<ButtonText align={align}>{children}</ButtonText>
-			<Icon position="right" icon={iconRight} />
+			<Styled.div
+				as="span"
+				sx={{
+					width: '100%',
+					height,
+					textAlign: align,
+					verticalAlign: 'text-top',
+					display: 'inline-flex',
+					justifyItems: 'stretch',
+				}}
+			>
+				<Icon position="left" icon={iconLeft} />
+				<ButtonText align={align}>{children}</ButtonText>
+				<Icon position="right" icon={iconRight} />
+			</Styled.div>
 		</Styled.div>
-	</Styled.div>
-)
+	)
+}
 
 Button.propTypes = {
 	children: PropTypes.node.isRequired,
