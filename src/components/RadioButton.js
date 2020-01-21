@@ -13,72 +13,59 @@ const getStyles = ({ theme, variant, disabled }) => ({
 	input: {
 		opacity: 0,
 		position: 'absolute',
-		'&:checked ~ .checkbox-custom': {
+		'&:checked ~ .radio-custom': {
 			backgroundColor: variant,
-			borderRadius: '3px',
-			transform: 'rotate(0deg) scale(1)',
-			opacity: 1,
+			borderRadius: '50%',
 			borderWidth: '1px',
 			borderStyle: 'solid',
 			borderColor: variant,
 		},
-		'&:checked ~ .checkbox-custom > .checkbox-custom-check': {
-			transform: 'rotate(45deg) scale(1)',
+		'&:checked ~ .radio-custom > .radio-custom-dot': {
+			transform: 'scale(.5)',
 			opacity: 1,
-			left: '5px',
-			top: '1px',
-			width: '4px',
-			height: '10px',
-			borderStyle: 'solid',
-			borderWidth: '0 2px 2px 0',
-			borderColor: 'white',
-			backgroundColor: 'transparent',
-			borderRadius: 0,
-			boxShadow: '0 0 0 0 transparent',
+			backgroundColor: `${variant}UltraLight`,
 		},
-		'&:not(:checked):hover ~ .checkbox-custom': !disabled && {
+		'&:not(:checked):hover ~ .radio-custom': !disabled && {
 			backgroundColor: `${variant}ExtraLight`,
 		},
-		'&:focus ~ .checkbox-custom': !disabled && {
+		'&:focus ~ .radio-custom': !disabled && {
 			boxShadow: `0 0 0 4px ${transparentize(0.7, theme.colors[variant])}`,
 		},
 	},
-	checkbox: {
+	radio: {
 		position: 'absolute',
 		top: 0,
 		left: 0,
 		height: '16px',
 		width: '16px',
 		backgroundColor: 'transparent',
-		borderRadius: '3px',
+		borderRadius: '50%',
 		borderWidth: '1px',
 		borderStyle: 'solid',
 		borderColor: variant,
 		transition: 'all 100ms ease-in',
 	},
-	checkmark: {
+	dot: {
 		position: 'absolute',
 		content: '""',
-		left: '8px',
-		top: '8px',
-		height: 0,
-		width: 0,
-		borderRadius: '3px',
-		borderStyle: 'solid',
-		borderColor: 'white',
-		borderWidth: '0 3px 3px 0',
-		transform: 'rotate(0deg) scale(0)',
-		opacity: 1,
+		left: 0,
+		top: 0,
+		height: '16px',
+		width: '16px',
+		borderRadius: '50%',
+		backgroundColor: 'white',
+		transform: 'scale(1)',
+		opacity: 0,
 		transition: 'all 100ms ease-in',
 	},
 })
 
 let idStack = 0
-const Checkbox = ({
-	id,
+const Radio = ({
 	label = '',
 	variant = 'primary',
 	defaultChecked = false,
+	id,
 	...props
 }) => {
 	const { theme } = useThemeUI()
@@ -89,26 +76,22 @@ const Checkbox = ({
 		<Styled.div sx={styles.label} as="label" htmlFor={finalId}>
 			<Styled.div
 				as="input"
-				type="checkbox"
+				type="radio"
 				sx={styles.input}
 				disabled={disabled}
 				defaultChecked={defaultChecked}
 				id={finalId}
 				{...props}
 			/>
-			<Styled.div as="span" className="checkbox-custom" sx={styles.checkbox}>
-				<Styled.div
-					as="span"
-					className="checkbox-custom-check"
-					sx={styles.checkmark}
-				/>
+			<Styled.div as="span" className="radio-custom" sx={styles.radio}>
+				<Styled.div as="span" className="radio-custom-dot" sx={styles.dot} />
 			</Styled.div>
 			{label}
 		</Styled.div>
 	)
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
 	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	label: PropTypes.string,
 	disabled: PropTypes.bool,
@@ -116,4 +99,4 @@ Checkbox.propTypes = {
 	variant: PropTypes.oneOf(['primary', 'disabled', 'error', 'success', 'warning']),
 }
 
-export default Checkbox
+export default Radio
