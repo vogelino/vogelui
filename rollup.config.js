@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser'
 import { uglify } from 'rollup-plugin-uglify'
 import packageJSON from './package.json'
 
-const input = './src/index.tsx'
+const input = './src/index.js'
 const minifyExtension = (pathToFile) => pathToFile.replace(/\.js$/, '.min.js')
 
 const resolvePlugin = resolve({ extensions: ['.mjs', '.js', '.jsx', '.json'] })
