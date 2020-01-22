@@ -14,6 +14,14 @@ export const variants = () => (
 			<tbody>
 				<TableRow>
 					<TableCell>
+						<Subhead>Default</Subhead>
+					</TableCell>
+					<TableCell>
+						<Alert variant="default">{' Look! I am an alert!'}</Alert>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
 						<Subhead>Primary</Subhead>
 					</TableCell>
 					<TableCell>
@@ -67,6 +75,16 @@ export const differentProps = () => (
 					</TableCell>
 					<TableCell>
 						<Alert title="Hey!">{' Look! I am an alert!'}</Alert>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Width title &amp; icon</Subhead>
+					</TableCell>
+					<TableCell>
+						<Alert title="Hey!" icon="cannabis">
+							{' Look! I am an alert!'}
+						</Alert>
 					</TableCell>
 				</TableRow>
 				<TableRow>

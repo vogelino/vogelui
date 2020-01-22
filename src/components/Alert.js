@@ -24,7 +24,7 @@ const ClearIcon = ({ right, onClick }) => (
 			display: 'grid',
 			alignItems: 'center',
 			justifyItems: 'center',
-			opacity: 0.6,
+			opacity: 0.4,
 			transition: 'opacity 100ms ease-out',
 			'&:hover': {
 				opacity: 1,
@@ -44,7 +44,7 @@ const Alert = ({
 	children,
 	title,
 	icon,
-	variant = 'primary',
+	variant = 'default',
 	as = 'div',
 	sx = {},
 	dismissable = true,
@@ -62,7 +62,7 @@ const Alert = ({
 			}}
 		>
 			{icon && <PrefixIcon icon={icon} />}
-			{title && <Emphasis>{title}</Emphasis>}
+			{title && <Emphasis color={theme.alerts[variant].color}>{title}</Emphasis>}
 			{children}
 			{dismissable && (
 				<ClearIcon
@@ -76,7 +76,7 @@ const Alert = ({
 
 Alert.propTypes = {
 	as: PropTypes.string,
-	variant: PropTypes.oneOf(['primary', 'error', 'success', 'warning']),
+	variant: PropTypes.oneOf(['default', 'primary', 'error', 'success', 'warning']),
 	sx: PropTypes.shape({}),
 	children: PropTypes.node,
 	dismissable: PropTypes.bool,

@@ -1,7 +1,7 @@
 const getAlertVariantStyle = (variant) => ({
 	color: `${variant}Dark`,
 	backgroundColor: `${variant}UltraLight`,
-	borderColor: variant,
+	borderColor: `${variant}ExtraLight`,
 })
 
 export default {
@@ -10,9 +10,13 @@ export default {
 		paddingBottom: 4,
 		paddingRight: 5,
 		paddingLeft: 5,
-		backgroundColor: 'greyExtraLight',
+		backgroundColor: 'greyUltraLight',
 		borderRadius: 4,
 		border: '1px solid',
+	},
+	default: {
+		...getAlertVariantStyle('grey'),
+		color: 'greyExtraDark',
 	},
 	primary: getAlertVariantStyle('primary'),
 	error: getAlertVariantStyle('error'),
