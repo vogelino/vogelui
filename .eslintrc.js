@@ -22,6 +22,6 @@ module.exports = {
 		indent: 'off',
 		'react/jsx-indent': 'off',
 		semi: ['error', 'never'],
-		'react/display-name': ['off', { "ignoreTranspilerName": false }]
+		'react/display-name': ['off', { ignoreTranspilerName: false }],
 	},
 }
