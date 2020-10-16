@@ -47,11 +47,19 @@ Typography.propTypes = {
 
 export default Typography
 
-const createVariantComponent = (variant, baseProps = {}) => ({ children, ...props }) => (
-	<Typography {...baseProps} {...props} variant={variant}>
-		{children}
-	</Typography>
-)
+const createVariantComponent = (variant, baseProps = {}) => {
+	const TypographyComponent = ({ children, ...props }) => (
+		<Typography {...baseProps} {...props} variant={variant}>
+			{children}
+		</Typography>
+	)
+
+	TypographyComponent.propTypes = {
+		children: Typography.propTypes.children,
+	}
+
+	return TypographyComponent
+}
 
 export const HeroTitle = createVariantComponent('hero')
 export const H1 = createVariantComponent('h1')

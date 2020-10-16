@@ -1,5 +1,4 @@
 {
-	"name": "vogelui",
 	"version": 2,
 	"routes": [{ "src": "/storybook-static" }]
 }
