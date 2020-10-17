@@ -13,7 +13,7 @@ const createColorScale = (color, colorName) => ({
 const baseColors = {
 	black: '#000',
 	white: '#fff',
-	...createColorScale('#2980B9', 'primary'),
+	...createColorScale('#1EA8FD', 'primary'),
 	...createColorScale('#7A8690', 'grey'),
 	...createColorScale('#27AE60', 'success'),
 	...createColorScale('#C0392B', 'error'),
