@@ -12,6 +12,7 @@ const PrefixIcon = styled(Icon)`
 
 const ClearIcon = ({ right, onClick }) => (
 	<Styled.div
+		data-testid="close-icon"
 		as="span"
 		sx={{
 			position: 'absolute',
