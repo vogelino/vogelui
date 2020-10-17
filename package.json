@@ -115,5 +115,12 @@
 	"dependencies": {
 		"babel-eslint": "^10.0.3",
 		"react-select": "^3.0.8"
+	},
+	"bit": {
+		"env": {
+			"compiler": "bit.envs/compilers/react@1.0.21"
+		},
+		"componentsDefaultDirectory": "components/{name}",
+		"packageManager": "npm"
 	}
 }
