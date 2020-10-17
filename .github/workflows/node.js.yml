@@ -29,12 +29,14 @@ jobs:
     - run: npm run format
     - run: npm run lint
   deploy-storybook:
-
-    runs-on: ubuntu-latestw
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./storybook-static
-      - name: Vercel Action
-        uses: amondnet/vercel-action@v19.0.1+4
-      - run: now -A ../now.json --prod
+      - uses: amondnet/vercel-action@v19
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.ORG_ID}} 
+          vercel-project-id: ${{ secrets.PROJECT_ID}}
+          working-directory: ./sub-directory
