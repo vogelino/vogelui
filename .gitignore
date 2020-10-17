@@ -65,3 +65,5 @@ storybook-static
 
 # Dist folder
 dist
+
+.vercel

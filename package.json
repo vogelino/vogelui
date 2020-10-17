@@ -16,7 +16,7 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"build": "rollup -c",
-		"deploy-storybook": "npm run build-storybook && cd storybook-static && now -A ../now.json --prod",
+		"deploy-storybook": "npm run build-storybook && now -A ../vercel.json --prod",
 		"prepublishOnly": "rm -rf lib && npm run build",
 		"postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
