@@ -15,7 +15,7 @@ const baseColors = {
 	white: '#fff',
 	...createColorScale('#1EA8FD', 'primary'),
 	...createColorScale('#7A8690', 'grey'),
-	...createColorScale('#27AE60', 'success'),
+	...createColorScale('#66bf3c', 'success'),
 	...createColorScale('#C0392B', 'error'),
 	...createColorScale('#F1C40F', 'warning'),
 }
