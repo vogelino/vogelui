@@ -16,11 +16,11 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook --output-dir public",
 		"build": "rollup -c",
-		"deploy-storybook": "npm run build-storybook && now -A ../vercel.json --prod",
 		"prepublishOnly": "rm -rf lib && npm run build",
 		"postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
-		"lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"deploy-storybook": "npx chromatic --project-token to1j4o804x"
 	},
 	"repository": {
 		"type": "git",
