@@ -30,3 +30,13 @@ jobs:
     - run: npm run test
     - run: npm run build
     - run: npm run build-storybook
+  deploy-storybook:
+
+    runs-on: ubuntu-latestw
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./storybook-static
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v19.0.1+4
+      - run: now -A ../now.json --prod
