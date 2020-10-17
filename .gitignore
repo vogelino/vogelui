@@ -62,6 +62,9 @@ lib
 
 # Storybook build
 storybook-static
+public
 
 # Dist folder
 dist
+
+.vercel
