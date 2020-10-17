@@ -12,7 +12,7 @@
 		"/lib"
 	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\"",
+		"test": "jest",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook --output-dir public",
 		"build": "rollup -c",
@@ -64,11 +64,13 @@
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.9.0",
 		"eslint-config-react": "^1.1.7",
+		"eslint-plugin-jest": "^24.1.0",
 		"eslint-plugin-json": "^2.0.1",
 		"eslint-plugin-prettier": "^3.1.2",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^2.3.0",
 		"husky": "^4.0.7",
+		"jest": "^26.5.3",
 		"lint-staged": "^9.5.0",
 		"polished": "^3.4.2",
 		"prettier": "^1.19.1",
@@ -99,7 +101,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && npm run format"
+			"pre-commit": "npm run test && npm run format && npm run lint"
 		}
 	},
 	"lint-staged": {

@@ -40,15 +40,25 @@ ClearIcon.propTypes = {
 	onClick: PropTypes.func.isRequired,
 }
 
-const Alert = ({
-	children,
-	title,
-	icon,
-	variant = 'default',
-	as = 'div',
-	sx = {},
-	dismissable = true,
-}) => {
+const Alert = (
+	{
+		children,
+		title,
+		icon,
+		variant = 'default',
+		as = 'div',
+		sx = {},
+		dismissable = true,
+	} = {
+		children: '',
+		title: '',
+		icon: undefined,
+		variant: 'default',
+		as: 'div',
+		sx: {},
+		dismissable: true,
+	},
+) => {
 	const [isVisible, setVisible] = useState(true)
 	const { theme } = useThemeUI()
 	return isVisible ? (
