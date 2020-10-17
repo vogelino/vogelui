@@ -1,6 +1,6 @@
 {
 	"name": "vogelui",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "A collection all-purpose UI elements for building responsive websites",
 	"main": "lib/index.js",
 	"browser": "lib/index.umd.js",
