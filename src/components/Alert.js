@@ -10,9 +10,8 @@ const PrefixIcon = styled(Icon)`
 	margin-right: 0.5rem;
 `
 
-const ClearIcon = ({ right, onClick }) => (
+const ClearIcon = ({ right, onClick, ...props }) => (
 	<Styled.div
-		data-testid="close-icon"
 		as="span"
 		sx={{
 			position: 'absolute',
@@ -32,7 +31,7 @@ const ClearIcon = ({ right, onClick }) => (
 			},
 		}}
 	>
-		<Icon icon="times" onClick={onClick} />
+		<Icon icon="times" onClick={onClick} {...props} />
 	</Styled.div>
 )
 
@@ -64,6 +63,7 @@ const Alert = (
 	const { theme } = useThemeUI()
 	return isVisible ? (
 		<Styled.div
+			data-testid="alert"
 			as={as}
 			sx={{
 				...theme.alerts.common,
@@ -77,6 +77,7 @@ const Alert = (
 			{children}
 			{dismissable && (
 				<ClearIcon
+					data-testid="close-icon"
 					onClick={() => setVisible(false)}
 					right={theme.alerts.common.paddingRight}
 				/>

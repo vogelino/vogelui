@@ -53,6 +53,11 @@
                 "relativePath": "src/components/Icon.js",
                 "test": false,
                 "name": "Icon.js"
+            },
+            {
+                "relativePath": "src/theme/index.js",
+                "test": false,
+                "name": "index.js"
             }
         ],
         "mainFile": "src/components/Icon.js",
