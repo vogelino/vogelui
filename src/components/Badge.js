@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { buttonVariantProp, buttonSizeProp } from '../theme/button'
 import { getCustomColorTheme } from '../utils/colorUtil'
 
-const DOT_STYLES = {
+export const DOT_STYLES = {
 	border: 'none',
 	height: 8,
 	width: 8,
@@ -13,13 +13,13 @@ const DOT_STYLES = {
 	padding: 0,
 }
 
-const getOffsetStyles = (hasOffset, contentIsText) =>
+const getOffsetStyles = (hasOffset, childrenIsText) =>
 	hasOffset
 		? {
 				position: 'absolute',
 				top: 0,
 				right: 0,
-				...(contentIsText
+				...(childrenIsText
 					? {
 							transform: 'translate(100%, -50%)',
 					  }
@@ -54,18 +54,16 @@ const Badge = ({
 }) => {
 	const { theme } = useThemeUI()
 	const finalSX = {
-		...theme.badges.common,
-		...theme.badges[variant],
-		...theme.badges.sizes[size],
-		...(color ? getCustomColorTheme(color) : {}),
+		...(theme?.badges?.common || {}),
+		...(theme?.badges[variant] || {}),
+		...(theme?.badges?.sizes[size] || {}),
+		...((color && getCustomColorTheme(color)) || {}),
 		...getOffsetStyles(!!children, typeof children === 'string'),
-		...(typeof content === 'undefined'
-			? {
-					...DOT_STYLES,
-					background:
-						variant !== 'default' ? theme.colors[variant] : color || 'red',
-			  }
-			: {}),
+		...((typeof content === 'undefined' && {
+			...DOT_STYLES,
+			background: variant !== 'default' ? theme.colors[variant] : color || 'red',
+		}) ||
+			{}),
 		...sx,
 	}
 	const badge = (
