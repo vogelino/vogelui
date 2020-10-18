@@ -68,3 +68,5 @@ public
 dist
 
 .vercel
+.bitmap
+.bit.map.json
