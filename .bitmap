@@ -7,6 +7,11 @@
                 "relativePath": "src/components/Alert.js",
                 "test": false,
                 "name": "Alert.js"
+            },
+            {
+                "relativePath": "src/components/__tests/Alert.test.js",
+                "test": true,
+                "name": "Alert.test.js"
             }
         ],
         "mainFile": "src/components/Alert.js",
@@ -140,6 +145,11 @@
                 "relativePath": "src/components/Tooltip.js",
                 "test": false,
                 "name": "Tooltip.js"
+            },
+            {
+                "relativePath": "src/theme/tooltip.js",
+                "test": false,
+                "name": "tooltip.js"
             }
         ],
         "mainFile": "src/components/Tooltip.js",
