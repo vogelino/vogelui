@@ -4,6 +4,7 @@ import buttons from './button'
 import inputs from './input'
 import tooltips from './tooltip'
 import alerts from './alert'
+import badges from './badge'
 
 const theme = {
 	breakpoints: ['40em', '52em', '64em'],
@@ -20,6 +21,7 @@ const theme = {
 	inputs,
 	tooltips,
 	alerts,
+	badges,
 }
 
 export default theme
