@@ -14,7 +14,20 @@ const getDismissableStyles = () => ({
 	position: 'relative',
 })
 
-const ClearIcon = ({ size = 'm', variant = 'default', onClick = () => {}, ...props }) => {
+type VariantType = 'default' | 'primary' | 'error' | 'warning' | 'success'
+type SizeType = 's' | 'm' | 'l'
+
+type ClearIconType = {
+	size?: SizeType,
+	variant?: VariantType,
+	onClick?: Function,
+}
+
+const ClearIcon = ({
+	size = 'm',
+	variant = 'default',
+	onClick = () => {},
+}: ClearIconType) => {
 	const sizeStyles = {
 		s: {
 			right: '3px',
@@ -33,6 +46,7 @@ const ClearIcon = ({ size = 'm', variant = 'default', onClick = () => {}, ...pro
 
 	return (
 		<Styled.div
+			data-testid="close-icon"
 			as="span"
 			sx={{
 				opacity: 0.4,
@@ -60,15 +74,11 @@ const ClearIcon = ({ size = 'm', variant = 'default', onClick = () => {}, ...pro
 			onClick={onClick}
 			role="button"
 			tabIndex={1}
-			{...props}
 		>
 			✕
 		</Styled.div>
 	)
 }
-
-type VariantType = 'default' | 'primary' | 'error' | 'warning' | 'success'
-type SizeType = 's' | 'm' | 'l'
 
 type TagPropType = {
 	children?: string | number | Node,
@@ -107,7 +117,6 @@ const Tag = ({
 			<span>{children}</span>
 			{dismissable && (
 				<ClearIcon
-					data-testid="close-icon"
 					theme={theme}
 					size={size}
 					variant={variant}
