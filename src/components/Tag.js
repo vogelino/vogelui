@@ -93,10 +93,17 @@ const Tag = ({
 	}
 
 	return isVisible ? (
-		<Styled.div className={className} as={as} sx={finalSX} {...props}>
+		<Styled.div
+			data-testid="Tag"
+			className={className}
+			as={as}
+			sx={finalSX}
+			{...props}
+		>
 			<span>{children}</span>
 			{dismissable && (
 				<ClearIcon
+					data-testid="close-icon"
 					theme={theme}
 					size={size}
 					variant={variant}
