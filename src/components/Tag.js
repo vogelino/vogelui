@@ -1,12 +1,9 @@
+// @flow
 /** @jsx jsx */
 import { useState } from 'react'
+import type { Node } from 'react'
 import { jsx, Styled, useThemeUI } from 'theme-ui'
-import PropTypes from 'prop-types'
-import {
-	buttonVariantProp,
-	buttonSizeProp,
-	buttonInteractiveProps,
-} from '../theme/button'
+import { buttonInteractiveProps } from '../theme/button'
 import { getCustomColorTheme } from '../utils/colorUtil'
 
 const getDismissableStyles = () => ({
@@ -70,6 +67,20 @@ const ClearIcon = ({ size = 'm', variant = 'default', onClick = () => {}, ...pro
 	)
 }
 
+type VariantType = 'default' | 'primary' | 'error' | 'warning' | 'success'
+type SizeType = 's' | 'm' | 'l'
+
+type TagPropType = {
+	children?: string | number | Node,
+	className?: string,
+	as?: string,
+	variant?: VariantType,
+	size?: SizeType,
+	sx?: Object,
+	dismissable?: boolean,
+	color?: string,
+}
+
 const Tag = ({
 	children = null,
 	className = '',
@@ -79,8 +90,7 @@ const Tag = ({
 	sx = {},
 	dismissable = false,
 	color = undefined,
-	...props
-}) => {
+}: TagPropType): Node => {
 	const [isVisible, setVisible] = useState(true)
 	const { theme } = useThemeUI()
 	const finalSX = {
@@ -93,13 +103,7 @@ const Tag = ({
 	}
 
 	return isVisible ? (
-		<Styled.div
-			data-testid="Tag"
-			className={className}
-			as={as}
-			sx={finalSX}
-			{...props}
-		>
+		<Styled.div data-testid="Tag" className={className} as={as} sx={finalSX}>
 			<span>{children}</span>
 			{dismissable && (
 				<ClearIcon
@@ -114,17 +118,6 @@ const Tag = ({
 			)}
 		</Styled.div>
 	) : null
-}
-
-Tag.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
-	className: PropTypes.string,
-	sx: PropTypes.shape({}),
-	variant: buttonVariantProp,
-	size: buttonSizeProp,
-	as: PropTypes.string,
-	color: PropTypes.string,
-	dismissable: PropTypes.bool,
 }
 
 export default Tag
