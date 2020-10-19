@@ -13,8 +13,8 @@ const buttonBaseProps = {
 	display: 'inline-block',
 }
 
-const buttonInteractiveProps = (color) => {
-	const col = colors[color]
+export const buttonInteractiveProps = (color) => {
+	const col = colors[color] || colors.grey
 	const transCol0 = transparentize(0, col)
 	const transColFocus = transparentize(0.7, col)
 	return {
