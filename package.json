@@ -20,7 +20,8 @@
 		"postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-		"deploy-storybook": "npx chromatic --project-token to1j4o804x"
+		"deploy-storybook": "npx chromatic --project-token to1j4o804x",
+		"flow": "flow"
 	},
 	"repository": {
 		"type": "git",
@@ -41,6 +42,9 @@
 	},
 	"homepage": "https://github.com/vogelino/vogelui#readme",
 	"devDependencies": {
+		"@babel/cli": "^7.12.1",
+		"@babel/core": "^7.12.3",
+		"@babel/preset-flow": "^7.12.1",
 		"@emotion/core": "^10.0.27",
 		"@emotion/styled-base": "^10.0.27",
 		"@fortawesome/fontawesome-svg-core": "^1.2.26",
@@ -71,6 +75,7 @@
 		"eslint-plugin-prettier": "^3.1.2",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^2.3.0",
+		"flow-bin": "^0.136.0",
 		"husky": "^4.0.7",
 		"jest": "^26.5.3",
 		"jest-dom": "^4.0.0",
