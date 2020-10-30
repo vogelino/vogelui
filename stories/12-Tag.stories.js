@@ -1,4 +1,6 @@
 import React from 'react'
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 import { Table, TableRow, TableCell, TableHeaderCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
 import { Subhead } from '../src/components/Typography'
@@ -6,6 +8,7 @@ import Tag from '../src/components/Tag'
 
 export default {
 	title: 'Tag',
+	decorators: [withTests({ results })],
 }
 
 export const variantsAndSizes = () => (
@@ -131,6 +134,9 @@ export const variantsAndSizes = () => (
 		</Table>
 	</StoryWrapper>
 )
+variantsAndSizes.parameters = {
+	jest: ['Tag.test.js'],
+}
 
 export const dismissable = () => (
 	<StoryWrapper>
@@ -255,3 +261,6 @@ export const dismissable = () => (
 		</Table>
 	</StoryWrapper>
 )
+dismissable.parameters = {
+	jest: ['Tag.test.js'],
+}

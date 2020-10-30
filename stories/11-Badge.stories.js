@@ -1,4 +1,6 @@
 import React from 'react'
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 import { Table, TableRow, TableCell, TableHeaderCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
 import { Subhead } from '../src/components/Typography'
@@ -7,6 +9,7 @@ import Badge from '../src/components/Badge'
 
 export default {
 	title: 'Badge',
+	decorators: [withTests({ results })],
 }
 
 export const variantsAndSizes = () => (
@@ -102,6 +105,9 @@ export const variantsAndSizes = () => (
 		</Table>
 	</StoryWrapper>
 )
+variantsAndSizes.parameters = {
+	jest: ['Badge.test.js'],
+}
 
 export const NumberBadgesAndDots = () => (
 	<StoryWrapper>
@@ -186,6 +192,9 @@ export const NumberBadgesAndDots = () => (
 		</Table>
 	</StoryWrapper>
 )
+NumberBadgesAndDots.parameters = {
+	jest: ['Badge.test.js'],
+}
 
 export const AsSuperscript = () => (
 	<StoryWrapper>
@@ -286,3 +295,6 @@ export const AsSuperscript = () => (
 		</Table>
 	</StoryWrapper>
 )
+AsSuperscript.parameters = {
+	jest: ['Badge.test.js'],
+}
