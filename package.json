@@ -22,7 +22,8 @@
 		"postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-		"deploy:storybook": "npx chromatic --project-token to1j4o804x",
+		"deploy:storybook": "npm run chromatic",
+		"chromatic": "npx chromatic --project-token to1j4o804x",
 		"flow": "flow",
 		"test:generate-output": "jest --json --outputFile=.jest-test-results.json",
 		"test:generate-output:watch": "npm run test:generate-output -- --watch"
