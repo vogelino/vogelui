@@ -1,4 +1,6 @@
 import React from 'react'
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 import Button from '../src/components/Button'
 import { Table, TableRow, TableCell, TableHeaderCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
@@ -6,6 +8,7 @@ import { Subhead } from '../src/components/Typography'
 
 export default {
 	title: 'Buttons',
+	decorators: [withTests({ results })],
 }
 
 export const variants = () => (
@@ -144,6 +147,9 @@ export const variants = () => (
 		</Table>
 	</StoryWrapper>
 )
+variants.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const alignments = () => (
 	<StoryWrapper>
@@ -227,6 +233,9 @@ export const alignments = () => (
 		</Table>
 	</StoryWrapper>
 )
+alignments.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const autoWidthButtonWithIcons = () => (
 	<StoryWrapper>
@@ -314,6 +323,9 @@ export const autoWidthButtonWithIcons = () => (
 		</Table>
 	</StoryWrapper>
 )
+autoWidthButtonWithIcons.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const fixedWidthButtonWithIcons = () => (
 	<StoryWrapper>
@@ -415,6 +427,9 @@ export const fixedWidthButtonWithIcons = () => (
 		</Table>
 	</StoryWrapper>
 )
+fixedWidthButtonWithIcons.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const buttonGroup = () => (
 	<StoryWrapper>
@@ -488,3 +503,6 @@ export const buttonGroup = () => (
 		</Table>
 	</StoryWrapper>
 )
+buttonGroup.parameters = {
+	jest: ['Button.test.js'],
+}

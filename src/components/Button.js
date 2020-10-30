@@ -19,6 +19,7 @@ const Button = ({
 	align = 'left',
 	height = 'auto',
 	width = 'auto',
+	onClick = () => {},
 	iconLeft,
 	iconRight,
 }) => {
@@ -26,6 +27,7 @@ const Button = ({
 	return (
 		<Styled.div
 			className="button"
+			data-testid="button"
 			as={as}
 			sx={{
 				whiteSpace: 'nowrap',
@@ -35,6 +37,7 @@ const Button = ({
 				width,
 				...sx,
 			}}
+			onClick={onClick}
 			disabled={variant === 'disabled'}
 		>
 			<Styled.div
@@ -48,9 +51,9 @@ const Button = ({
 					justifyItems: 'stretch',
 				}}
 			>
-				<Icon position="left" icon={iconLeft} />
+				<Icon data-testid="left-icon" position="left" icon={iconLeft} />
 				<ButtonText align={align}>{children}</ButtonText>
-				<Icon position="right" icon={iconRight} />
+				<Icon data-testid="right-icon" position="right" icon={iconRight} />
 			</Styled.div>
 		</Styled.div>
 	)
@@ -67,6 +70,7 @@ Button.propTypes = {
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	iconLeft: Icon.propTypes.icon,
 	iconRight: Icon.propTypes.icon,
+	onClick: PropTypes.func,
 }
 
 const ButtonGroupContainer = styled.div`

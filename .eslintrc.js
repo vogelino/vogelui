@@ -16,6 +16,7 @@ module.exports = {
 		sourceType: 'module',
 		ecmaFeatures: {
 			jsx: true,
+			jest: true,
 		},
 	},
 	plugins: ['react', 'prettier', 'jest'],
@@ -36,5 +37,8 @@ module.exports = {
 		'react/jsx-indent': 'off',
 		semi: ['error', 'never'],
 		'react/display-name': ['off', { ignoreTranspilerName: false }],
+	},
+	globals: {
+		window: 'readonly',
 	},
 }
