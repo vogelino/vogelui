@@ -31,6 +31,15 @@ test('Button renders a right icon if provided', () => {
 	expect(icon.getAttribute('data-icon')).toBe(testIcon)
 })
 
+test('Button renders a center icon if provided', () => {
+	const testIcon = 'times'
+	render(<Button iconCenter={testIcon}>Hey fellas!</Button>)
+
+	const icon = screen.getByTestId('center-icon')
+	expect(icon).toBeInTheDocument()
+	expect(icon.getAttribute('data-icon')).toBe(testIcon)
+})
+
 test('Button renders as another tag if as prop is provided', () => {
 	const testAs = 'span'
 	render(<Button as={testAs}>Hey fellas!</Button>)
