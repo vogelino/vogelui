@@ -21,6 +21,13 @@ const IconEl = styled(FontAwesomeIcon)`
 		justify-self: flex-end;
 		margin-left: 8px;
 	}
+
+	&.center {
+		justify-self: center;
+		align-self: center;
+		margin-left: 0;
+		margin-right: 0;
+	}
 `
 
 export const Icon = ({
@@ -60,7 +67,7 @@ export const Icon = ({
 
 Icon.propTypes = {
 	icon: PropTypes.oneOfType([FontAwesomeIcon.propTypes.icon, FontAwesomeIcon]),
-	position: PropTypes.oneOf(['left', 'right', '']),
+	position: PropTypes.oneOf(['left', 'right', 'center']),
 	onClick: PropTypes.func,
 	defaultColor: colorPropType,
 }

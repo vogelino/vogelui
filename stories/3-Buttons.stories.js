@@ -151,6 +151,116 @@ variants.parameters = {
 	jest: ['Button.test.js'],
 }
 
+export const iconButtons = () => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell>
+						<Subhead>Small</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Medium</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Large</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Default</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Primary</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="primary" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="primary" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="primary" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Disabled</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="disabled" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="disabled" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="disabled" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Success</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="success" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="success" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="success" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Error</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="error" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="error" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="error" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Warning</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="warning" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="warning" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="warning" />
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+iconButtons.parameters = {
+	jest: ['Button.test.js'],
+}
+
 export const alignments = () => (
 	<StoryWrapper>
 		<Table>
