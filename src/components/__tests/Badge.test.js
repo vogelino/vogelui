@@ -76,7 +76,7 @@ test('Badge offsets right if children is text', () => {
 	const badgeRoots = screen.getByTestId('badge')
 	const { transform } = global.getComputedStyle(badgeRoots)
 
-	expect(transform).toBe('translate(100%,-50%)')
+	expect(transform).toBe('translateX(100%) translateY(-50%) scale(0) translateZ(0)')
 })
 
 test('Badge offsets right if children is node', () => {
@@ -89,7 +89,7 @@ test('Badge offsets right if children is node', () => {
 	const badgeRoots = screen.getByTestId('badge')
 	const { transform } = global.getComputedStyle(badgeRoots)
 
-	expect(transform).toBe('translate(50%,-50%)')
+	expect(transform).toBe('translateX(50%) translateY(-50%) scale(0) translateZ(0)')
 })
 
 test('Badge renders dot if no content is given', () => {
