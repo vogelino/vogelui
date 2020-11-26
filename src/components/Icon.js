@@ -21,9 +21,23 @@ const IconEl = styled(FontAwesomeIcon)`
 		justify-self: flex-end;
 		margin-left: 8px;
 	}
+
+	&.center {
+		justify-self: center;
+		align-self: center;
+		margin-left: 0;
+		margin-right: 0;
+	}
 `
 
-export const Icon = ({ icon, position = '', defaultColor, onClick, className = '' }) => {
+export const Icon = ({
+	icon,
+	position = '',
+	defaultColor,
+	onClick,
+	className = '',
+	...props
+}) => {
 	const { theme } = useThemeUI()
 
 	if (!icon) return null
@@ -34,6 +48,7 @@ export const Icon = ({ icon, position = '', defaultColor, onClick, className = '
 				className={`${className} ${position}`}
 				icon={icon}
 				onClick={onClick}
+				{...props}
 			/>
 		)
 	const color = theme.colors[icon.color] || defaultColor
@@ -44,6 +59,7 @@ export const Icon = ({ icon, position = '', defaultColor, onClick, className = '
 				color={color}
 				icon={icon.icon}
 				onClick={onClick}
+				{...props}
 			/>
 		)
 	return null
@@ -51,7 +67,7 @@ export const Icon = ({ icon, position = '', defaultColor, onClick, className = '
 
 Icon.propTypes = {
 	icon: PropTypes.oneOfType([FontAwesomeIcon.propTypes.icon, FontAwesomeIcon]),
-	position: PropTypes.oneOf(['left', 'right', '']),
+	position: PropTypes.oneOf(['left', 'right', 'center']),
 	onClick: PropTypes.func,
 	defaultColor: colorPropType,
 }

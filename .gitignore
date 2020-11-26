@@ -68,3 +68,6 @@ public
 dist
 
 .vercel
+.bitmap
+.bit.map.json
+.jest-test-results.json

@@ -16,11 +16,10 @@ export const Container = ({ children }) => (
 			display: 'grid',
 			alignContent: 'center',
 			alignItems: 'center',
-			justifyContent: 'stretch',
-			background: 'primary',
-			gridTemplateColumns: 'auto',
-			maxWidth: '720px',
-			margin: '0 auto',
+			justifyContent: 'center',
+			justifyItems: 'center',
+			padding: 8,
+			boxSizing: 'border-box',
 		}}
 	>
 		{children}

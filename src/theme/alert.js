@@ -8,11 +8,12 @@ export default {
 	common: {
 		paddingTop: 4,
 		paddingBottom: 4,
-		paddingRight: 5,
+		paddingRight: 8,
 		paddingLeft: 5,
 		backgroundColor: 'greyUltraLight',
 		borderRadius: 4,
 		border: '1px solid',
+		boxSizing: 'border-box',
 	},
 	default: {
 		...getAlertVariantStyle('grey'),

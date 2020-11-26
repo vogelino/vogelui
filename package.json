@@ -12,15 +12,21 @@
 		"/lib"
 	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\"",
+		"test": "jest",
+		"prestorybook": "npm run test:generate-output",
 		"storybook": "start-storybook -p 6006",
+		"prebuild-storybook": "npm run test:generate-output",
 		"build-storybook": "build-storybook --output-dir public",
 		"build": "rollup -c",
 		"prepublishOnly": "rm -rf lib && npm run build",
 		"postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|md)\"",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-		"deploy-storybook": "npx chromatic --project-token to1j4o804x"
+		"deploy:storybook": "npm run chromatic",
+		"chromatic": "npx chromatic --project-token to1j4o804x",
+		"flow": "flow",
+		"test:generate-output": "jest --json --outputFile=.jest-test-results.json",
+		"test:generate-output:watch": "npm run test:generate-output -- --watch"
 	},
 	"repository": {
 		"type": "git",
@@ -41,17 +47,23 @@
 	},
 	"homepage": "https://github.com/vogelino/vogelui#readme",
 	"devDependencies": {
+		"@babel/cli": "^7.12.1",
+		"@babel/core": "^7.12.3",
+		"@babel/preset-flow": "^7.12.1",
 		"@emotion/core": "^10.0.27",
 		"@emotion/styled-base": "^10.0.27",
 		"@fortawesome/fontawesome-svg-core": "^1.2.26",
 		"@fortawesome/free-solid-svg-icons": "^5.12.0",
 		"@fortawesome/react-fontawesome": "^0.1.8",
 		"@mdx-js/react": "^1.5.2",
-		"@storybook/addon-actions": "^6.0.26",
-		"@storybook/addon-links": "^6.0.26",
-		"@storybook/addon-viewport": "^6.0.26",
-		"@storybook/addons": "^6.0.26",
-		"@storybook/react": "^6.0.26",
+		"@storybook/addon-actions": "^6.0.28",
+		"@storybook/addon-jest": "^6.0.28",
+		"@storybook/addon-links": "^6.0.28",
+		"@storybook/addon-viewport": "^6.0.28",
+		"@storybook/addons": "^6.0.28",
+		"@storybook/react": "^6.0.28",
+		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/react": "^11.1.0",
 		"@types/material-ui": "^0.21.7",
 		"@types/node": "^12.12.14",
 		"@types/react": "^16.9.13",
@@ -64,17 +76,22 @@
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.9.0",
 		"eslint-config-react": "^1.1.7",
+		"eslint-plugin-jest": "^24.1.0",
 		"eslint-plugin-json": "^2.0.1",
 		"eslint-plugin-prettier": "^3.1.2",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^2.3.0",
+		"flow-bin": "^0.136.0",
 		"husky": "^4.0.7",
+		"jest": "^26.5.3",
+		"jest-dom": "^4.0.0",
 		"lint-staged": "^9.5.0",
 		"polished": "^3.4.2",
 		"prettier": "^1.19.1",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"react-ripples": "^2.2.1",
+		"react-test-render": "^1.1.2",
 		"rollup": "^1.29.0",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-commonjs": "^10.1.0",
@@ -99,7 +116,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && npm run format"
+			"pre-commit": "(npm run format && npm run lint) & npm run flow & npm run test -- --ci --silent"
 		}
 	},
 	"lint-staged": {
@@ -115,5 +132,13 @@
 	"dependencies": {
 		"babel-eslint": "^10.0.3",
 		"react-select": "^3.0.8"
+	},
+	"bit": {
+		"env": {
+			"compiler": "bit.envs/compilers/react@1.0.21",
+			"tester": "bit.envs/testers/jest@22.4.3"
+		},
+		"componentsDefaultDirectory": "components/{name}",
+		"packageManager": "npm"
 	}
 }

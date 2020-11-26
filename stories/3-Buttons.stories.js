@@ -1,4 +1,6 @@
 import React from 'react'
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 import Button from '../src/components/Button'
 import { Table, TableRow, TableCell, TableHeaderCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
@@ -6,6 +8,7 @@ import { Subhead } from '../src/components/Typography'
 
 export default {
 	title: 'Buttons',
+	decorators: [withTests({ results })],
 }
 
 export const variants = () => (
@@ -144,6 +147,119 @@ export const variants = () => (
 		</Table>
 	</StoryWrapper>
 )
+variants.parameters = {
+	jest: ['Button.test.js'],
+}
+
+export const iconButtons = () => (
+	<StoryWrapper>
+		<Table>
+			<thead>
+				<TableRow>
+					<TableHeaderCell />
+					<TableHeaderCell>
+						<Subhead>Small</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Medium</Subhead>
+					</TableHeaderCell>
+					<TableHeaderCell>
+						<Subhead>Large</Subhead>
+					</TableHeaderCell>
+				</TableRow>
+			</thead>
+			<tbody>
+				<TableRow>
+					<TableCell>
+						<Subhead>Default</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Primary</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="primary" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="primary" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="primary" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Disabled</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="disabled" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="disabled" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="disabled" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Success</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="success" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="success" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="success" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Error</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="error" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="error" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="error" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Subhead>Warning</Subhead>
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="s" variant="warning" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="m" variant="warning" />
+					</TableCell>
+					<TableCell>
+						<Button iconCenter="arrow-right" size="l" variant="warning" />
+					</TableCell>
+				</TableRow>
+			</tbody>
+		</Table>
+	</StoryWrapper>
+)
+iconButtons.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const alignments = () => (
 	<StoryWrapper>
@@ -227,6 +343,9 @@ export const alignments = () => (
 		</Table>
 	</StoryWrapper>
 )
+alignments.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const autoWidthButtonWithIcons = () => (
 	<StoryWrapper>
@@ -314,6 +433,9 @@ export const autoWidthButtonWithIcons = () => (
 		</Table>
 	</StoryWrapper>
 )
+autoWidthButtonWithIcons.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const fixedWidthButtonWithIcons = () => (
 	<StoryWrapper>
@@ -415,6 +537,9 @@ export const fixedWidthButtonWithIcons = () => (
 		</Table>
 	</StoryWrapper>
 )
+fixedWidthButtonWithIcons.parameters = {
+	jest: ['Button.test.js'],
+}
 
 export const buttonGroup = () => (
 	<StoryWrapper>
@@ -488,3 +613,6 @@ export const buttonGroup = () => (
 		</Table>
 	</StoryWrapper>
 )
+buttonGroup.parameters = {
+	jest: ['Button.test.js'],
+}

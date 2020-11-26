@@ -1,4 +1,6 @@
 import React from 'react'
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 import { Table, TableRow, TableCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
 import { Subhead } from '../src/components/Typography'
@@ -6,6 +8,7 @@ import Alert from '../src/components/Alert'
 
 export default {
 	title: 'Alerts',
+	decorators: [withTests({ results })],
 }
 
 export const variants = () => (
@@ -56,6 +59,9 @@ export const variants = () => (
 		</Table>
 	</StoryWrapper>
 )
+variants.parameters = {
+	jest: ['Alert.test.js'],
+}
 
 export const differentProps = () => (
 	<StoryWrapper>
@@ -99,3 +105,6 @@ export const differentProps = () => (
 		</Table>
 	</StoryWrapper>
 )
+differentProps.parameters = {
+	jest: ['Alert.test.js'],
+}

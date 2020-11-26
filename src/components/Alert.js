@@ -10,7 +10,7 @@ const PrefixIcon = styled(Icon)`
 	margin-right: 0.5rem;
 `
 
-const ClearIcon = ({ right, onClick }) => (
+const ClearIcon = ({ right, onClick, ...props }) => (
 	<Styled.div
 		as="span"
 		sx={{
@@ -31,7 +31,7 @@ const ClearIcon = ({ right, onClick }) => (
 			},
 		}}
 	>
-		<Icon icon="times" onClick={onClick} />
+		<Icon icon="times" onClick={onClick} {...props} />
 	</Styled.div>
 )
 
@@ -40,19 +40,30 @@ ClearIcon.propTypes = {
 	onClick: PropTypes.func.isRequired,
 }
 
-const Alert = ({
-	children,
-	title,
-	icon,
-	variant = 'default',
-	as = 'div',
-	sx = {},
-	dismissable = true,
-}) => {
+const Alert = (
+	{
+		children,
+		title,
+		icon,
+		variant = 'default',
+		as = 'div',
+		sx = {},
+		dismissable = true,
+	} = {
+		children: '',
+		title: '',
+		icon: undefined,
+		variant: 'default',
+		as: 'div',
+		sx: {},
+		dismissable: true,
+	},
+) => {
 	const [isVisible, setVisible] = useState(true)
 	const { theme } = useThemeUI()
 	return isVisible ? (
 		<Styled.div
+			data-testid="alert"
 			as={as}
 			sx={{
 				...theme.alerts.common,
@@ -66,8 +77,9 @@ const Alert = ({
 			{children}
 			{dismissable && (
 				<ClearIcon
+					data-testid="close-icon"
 					onClick={() => setVisible(false)}
-					right={theme.alerts.common.paddingRight}
+					right={Math.ceil(theme.alerts.common.paddingRight / 2)}
 				/>
 			)}
 		</Styled.div>

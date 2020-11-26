@@ -1,14 +1,5 @@
-import { lighten, setLightness, darken } from 'polished'
 import PropTypes from 'prop-types'
-
-const createColorScale = (color, colorName) => ({
-	[colorName]: color,
-	[`${colorName}Light`]: lighten(0.15, color),
-	[`${colorName}ExtraLight`]: lighten(0.3, color),
-	[`${colorName}UltraLight`]: setLightness(0.97, color),
-	[`${colorName}Dark`]: darken(0.15, color),
-	[`${colorName}ExtraDark`]: setLightness(0.2, color),
-})
+import { createColorScale } from '../utils/colorUtil'
 
 const baseColors = {
 	black: '#000',

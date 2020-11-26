@@ -1,11 +1,25 @@
 module.exports = {
+	env: {
+		node: true,
+		es6: true,
+		'jest/globals': true,
+	},
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
 		'plugin:prettier/recommended',
+		'plugin:jest/recommended',
 	],
 	parser: 'babel-eslint',
-	plugins: ['react', 'prettier'],
+	parserOptions: {
+		ecmaVersion: 6,
+		sourceType: 'module',
+		ecmaFeatures: {
+			jsx: true,
+			jest: true,
+		},
+	},
+	plugins: ['react', 'prettier', 'jest'],
 	settings: {
 		react: {
 			pragma: 'React',
@@ -23,5 +37,8 @@ module.exports = {
 		'react/jsx-indent': 'off',
 		semi: ['error', 'never'],
 		'react/display-name': ['off', { ignoreTranspilerName: false }],
+	},
+	globals: {
+		window: 'readonly',
 	},
 }

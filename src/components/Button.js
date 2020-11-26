@@ -19,13 +19,16 @@ const Button = ({
 	align = 'left',
 	height = 'auto',
 	width = 'auto',
+	onClick = () => {},
 	iconLeft,
 	iconRight,
+	iconCenter,
 }) => {
 	const { theme } = useThemeUI()
 	return (
 		<Styled.div
 			className="button"
+			data-testid="button"
 			as={as}
 			sx={{
 				whiteSpace: 'nowrap',
@@ -33,8 +36,15 @@ const Button = ({
 				...theme.buttons.sizes[size],
 				height,
 				width,
+				...(!children && iconCenter
+					? {
+							paddingLeft: theme.buttons.sizes[size].paddingLeft - 1,
+							paddingRight: theme.buttons.sizes[size].paddingRight - 1,
+					  }
+					: {}),
 				...sx,
 			}}
+			onClick={onClick}
 			disabled={variant === 'disabled'}
 		>
 			<Styled.div
@@ -43,21 +53,22 @@ const Button = ({
 					width: '100%',
 					height,
 					textAlign: align,
-					verticalAlign: 'text-top',
+					verticalAlign: 'middle',
 					display: 'inline-flex',
 					justifyItems: 'stretch',
 				}}
 			>
-				<Icon position="left" icon={iconLeft} />
+				<Icon data-testid="left-icon" position="left" icon={iconLeft} />
+				<Icon data-testid="center-icon" position="center" icon={iconCenter} />
 				<ButtonText align={align}>{children}</ButtonText>
-				<Icon position="right" icon={iconRight} />
+				<Icon data-testid="right-icon" position="right" icon={iconRight} />
 			</Styled.div>
 		</Styled.div>
 	)
 }
 
 Button.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
 	sx: PropTypes.shape({}),
 	as: PropTypes.string,
 	variant: buttonVariantProp,
@@ -67,6 +78,8 @@ Button.propTypes = {
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	iconLeft: Icon.propTypes.icon,
 	iconRight: Icon.propTypes.icon,
+	iconCenter: Icon.propTypes.icon,
+	onClick: PropTypes.func,
 }
 
 const ButtonGroupContainer = styled.div`
