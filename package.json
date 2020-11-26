@@ -131,6 +131,7 @@
 	},
 	"dependencies": {
 		"babel-eslint": "^10.0.3",
+		"framer-motion": "^2.9.4",
 		"react-select": "^3.0.8"
 	},
 	"bit": {
