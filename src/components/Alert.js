@@ -79,7 +79,7 @@ const Alert = (
 				<ClearIcon
 					data-testid="close-icon"
 					onClick={() => setVisible(false)}
-					right={theme.alerts.common.paddingRight}
+					right={Math.ceil(theme.alerts.common.paddingRight / 2)}
 				/>
 			)}
 		</Styled.div>
