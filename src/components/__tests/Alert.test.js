@@ -33,5 +33,10 @@ test('Alerts should not render after being dismissed', () => {
 
 	fireEvent.click(screen.queryByTestId('close-icon'))
 
-	expect(screen.queryByTestId('alert')).not.toBeInTheDocument()
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			expect(screen.queryByTestId('alert')).not.toBeInTheDocument()
+			resolve()
+		}, 1000)
+	})
 })

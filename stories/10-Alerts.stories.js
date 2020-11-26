@@ -5,6 +5,7 @@ import { Table, TableRow, TableCell } from '../src/components/Table'
 import StoryWrapper from '../src/utils/storybookUtil'
 import { Subhead } from '../src/components/Typography'
 import Alert from '../src/components/Alert'
+import { motion } from 'framer-motion'
 
 export default {
 	title: 'Alerts',
@@ -14,7 +15,7 @@ export default {
 export const variants = () => (
 	<StoryWrapper>
 		<Table>
-			<tbody>
+			<motion.tbody>
 				<TableRow>
 					<TableCell>
 						<Subhead>Default</Subhead>
@@ -55,7 +56,7 @@ export const variants = () => (
 						<Alert variant="warning">{' Look! I am an alert!'}</Alert>
 					</TableCell>
 				</TableRow>
-			</tbody>
+			</motion.tbody>
 		</Table>
 	</StoryWrapper>
 )
